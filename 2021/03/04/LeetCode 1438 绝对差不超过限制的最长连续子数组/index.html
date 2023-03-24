@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接 给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。 如果不存在满足条件的子数组，则返回 0 。 示例 1：1234567891011121314输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4输出：2 解释：所有子数组如下：[8] 最大绝对差 |8-8| &#x3D; 0 &amp;">
@@ -267,20 +267,15 @@
 <p><font face="Consolas">给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。</p>
 <p><font face="Consolas">如果不存在满足条件的子数组，则返回 0 。</p>
 <h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [8,2,4,7], <span class="built_in">limit</span> = 4</span><br><span class="line">输出：2 </span><br><span class="line">解释：所有子数组如下：</span><br><span class="line">[8] 最大绝对差 |8-8| = 0 &lt;= 4.</span><br><span class="line">[8,2] 最大绝对差 |8-2| = 6 &gt; 4. </span><br><span class="line">[8,2,4] 最大绝对差 |8-2| = 6 &gt; 4.</span><br><span class="line">[8,2,4,7] 最大绝对差 |8-2| = 6 &gt; 4.</span><br><span class="line">[2] 最大绝对差 |2-2| = 0 &lt;= 4.</span><br><span class="line">[2,4] 最大绝对差 |2-4| = 2 &lt;= 4.</span><br><span class="line">[2,4,7] 最大绝对差 |2-7| = 5 &gt; 4.</span><br><span class="line">[4] 最大绝对差 |4-4| = 0 &lt;= 4.</span><br><span class="line">[4,7] 最大绝对差 |4-7| = 3 &lt;= 4.</span><br><span class="line">[7] 最大绝对差 |7-7| = 0 &lt;= 4. </span><br><span class="line">因此，满足题意的最长子数组的长度为 2 。</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [10,1,2,4,7,2], <span class="built_in">limit</span> = 5</span><br><span class="line">输出：4 </span><br><span class="line">解释：满足题意的最长子数组是 [2,4,7,2]，其最大绝对差 |2-7| = 5 &lt;= 5 。</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [4,2,2,2,4,4,2,2], <span class="built_in">limit</span> = 0</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
 <p>双指针~<br>我们开设两个指针 $l,r$，先移动 $r$ 指针，并记录区间 $[l,r]$ 内的最大值 $mx$ 和最小值 $mn$，显然当 $mx-mn\leq limit$ 时，区间长度就是答案；当条件不满足时，我们只需要固定 $r$ 指针，移动 $l$ 指针即可，即必须缩短区间长度以满足题目所给条件，但是我们移动指针的过程中要同时改变最大最小值，显然光开两个变量是不够的，我提供了两种方法：</p>
 <ul>
 <li>开一个大根堆 $mx$ 和小根堆 $mn$，显然堆顶就是我们要找的最大最小值，维护两个堆即可</li>
 <li>C++里面有一个强大的数据结构 $multiset$（同样是最容易被忽视的数据结构），这个数据结构自动排序且支持元素重复，显然 $multiset$ 的迭代器指向的开头和末尾就是我们要找的最大最小值</li>
 </ul>
-<p>下面两段代码分别对应第一种和第二种方法：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestSubarray</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; cnt;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, less&lt;&gt;&gt; mx;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;&gt;&gt; mn;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            cnt[nums[r]]++;</span><br><span class="line">            mx.<span class="built_in">emplace</span>(nums[r]);</span><br><span class="line">            mn.<span class="built_in">emplace</span>(nums[r]);</span><br><span class="line">            <span class="keyword">while</span> (mx.<span class="built_in">top</span>() - mn.<span class="built_in">top</span>() &gt; limit) &#123;</span><br><span class="line">                cnt[nums[l]]--;</span><br><span class="line">                <span class="keyword">while</span> (!cnt[mx.<span class="built_in">top</span>()]) mx.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">while</span> (!cnt[mn.<span class="built_in">top</span>()]) mn.<span class="built_in">pop</span>();</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, r - l + <span class="number">1</span>);</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<p>下面两段代码分别对应第一种和第二种方法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestSubarray</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; cnt;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, less&lt;&gt;&gt; mx;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;&gt;&gt; mn;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            cnt[nums[r]]++;</span><br><span class="line">            mx.<span class="built_in">emplace</span>(nums[r]);</span><br><span class="line">            mn.<span class="built_in">emplace</span>(nums[r]);</span><br><span class="line">            <span class="keyword">while</span> (mx.<span class="built_in">top</span>() - mn.<span class="built_in">top</span>() &gt; limit) &#123;</span><br><span class="line">                cnt[nums[l]]--;</span><br><span class="line">                <span class="keyword">while</span> (!cnt[mx.<span class="built_in">top</span>()]) mx.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">while</span> (!cnt[mn.<span class="built_in">top</span>()]) mn.<span class="built_in">pop</span>();</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, r - l + <span class="number">1</span>);</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestSubarray</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;nums, <span class="type">int</span> limit)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        multiset&lt;<span class="type">int</span>&gt; temp;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            temp.<span class="built_in">emplace</span>(nums[r]);</span><br><span class="line">            <span class="keyword">while</span> (*temp.<span class="built_in">rbegin</span>() - *temp.<span class="built_in">begin</span>() &gt; limit) &#123;</span><br><span class="line">                temp.<span class="built_in">erase</span>(temp.<span class="built_in">find</span>(nums[l++]));</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, r - l + <span class="number">1</span>);</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -403,6 +398,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -572,6 +570,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

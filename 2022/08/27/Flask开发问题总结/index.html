@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="毕设用 Flask 框架开发了一个 Web 网站 ，在开发过程中遇到了很多问题，今天这里做一个总结，避免以后遇到同样的问题。 问题 112# 问题代码Error: While importing &amp;#x27;xxx&amp;#x27;, an ImportError was raised. import 语句有误，检查所有 py 文件里的 import 语句，可能的错误一种是包名有误，另一种是引用其他 p">
@@ -264,11 +264,9 @@
 <h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题 1"></a>问题 1</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">Error: <span class="keyword">While</span> importing <span class="string">&#x27;xxx&#x27;</span>, an ImportError was raised.</span><br></pre></td></tr></table></figure>
 <p><font face="comic sans ms">import 语句有误，检查所有 py 文件里的 import 语句，可能的错误一种是包名有误，另一种是引用其他 py 文件里的函数时需要给出完整路径 “项目名.文件夹名.文件名.函数名” 的形式<br>注意直接使用 flask run 指令运行项目时报错很模糊，可以直接在编译器上运行 app.py 文件，这样可以获得比较清晰的错误提示</p>
 <h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 2"></a>问题 2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">云服务器上用 flask run 命令运行项目后，本地输入云服务器 ip 无法访问</span><br></pre></td></tr></table></figure>
-<p>在运行指令后加上主机地址以监听所有外部请求，如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flask run --host=<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<p>在运行指令后加上主机地址以监听所有外部请求，如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flask run --host=<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="问题-3"><a href="#问题-3" class="headerlink" title="问题 3"></a>问题 3</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">TypeError: Rule.__init__() got an unexpected keyword argument <span class="string">&#x27;method&#x27;</span></span><br></pre></td></tr></table></figure>
-<p><font face="comic sans ms">视图函数的装饰器里的 method 漏了 s，如下所示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">user_bp.route(<span class="string">&#x27;/settings/data&#x27;</span>, method=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">视图函数的装饰器里的 method 漏了 s，如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">user_bp.route(<span class="string">&#x27;/settings/data&#x27;</span>, method=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>])</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题-4"><a href="#问题-4" class="headerlink" title="问题 4"></a>问题 4</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">AssertionError: View <span class="function"><span class="keyword">function</span> <span class="title">mapping</span> <span class="title">is</span> <span class="title">overwriting</span> <span class="title">an</span> <span class="title">existing</span> <span class="title">endpoint</span> <span class="keyword">function</span>: <span class="title">blog</span>.<span class="title">change_theme</span></span></span><br></pre></td></tr></table></figure>
 <p><font face="comic sans ms">函数名重复，文件中有两个 change_theme 函数</p>
 <h3 id="问题-5"><a href="#问题-5" class="headerlink" title="问题 5"></a>问题 5</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: The view <span class="function"><span class="keyword">function</span> <span class="title">for</span> &#x27;<span class="title">xxx</span>&#x27; <span class="title">did</span> <span class="title">not</span> <span class="title">return</span> <span class="title">a</span> <span class="title">valid</span> <span class="title">response</span>. <span class="title">The</span> <span class="keyword">function</span> <span class="title">either</span> <span class="title">returned</span> <span class="title">None</span> <span class="title">or</span> <span class="title">ended</span> <span class="title">without</span> <span class="title">a</span> <span class="title">return</span> <span class="title">statement</span>.</span></span><br></pre></td></tr></table></figure>
@@ -416,6 +414,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -585,6 +586,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

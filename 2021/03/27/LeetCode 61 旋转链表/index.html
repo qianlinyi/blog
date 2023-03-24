@@ -20,25 +20,25 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。 示例 1： 12输入：head &#x3D; [1,2,3,4,5], k &#x3D; 2输出：[4,5,1,2,3]  示例 2： 12输入：head &#x3D; [0,1,2], k &#x3D; 4输出：[2,0,1]  简单链表操作，我们注意到移动的次数 k 可能会大于链表长度，所以必须要取模，这样一来移动的可能性只会为 [0,len">
+  <meta name="description" content="题目链接 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。 示例 1： 12输入：head &#x3D; [1,2,3,4,5], k &#x3D; 2输出：[4,5,1,2,3] 示例 2： 12输入：head &#x3D; [0,1,2], k &#x3D; 4输出：[2,0,1] 简单链表操作，我们注意到移动的次数 k 可能会大于链表长度，所以必须要取模，这样一来移动的可能性只会为 [0,len-1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 61 旋转链表">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/27/LeetCode%2061%20%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。 示例 1： 12输入：head &#x3D; [1,2,3,4,5], k &#x3D; 2输出：[4,5,1,2,3]  示例 2： 12输入：head &#x3D; [0,1,2], k &#x3D; 4输出：[2,0,1]  简单链表操作，我们注意到移动的次数 k 可能会大于链表长度，所以必须要取模，这样一来移动的可能性只会为 [0,len">
+<meta property="og:description" content="题目链接 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。 示例 1： 12输入：head &#x3D; [1,2,3,4,5], k &#x3D; 2输出：[4,5,1,2,3] 示例 2： 12输入：head &#x3D; [0,1,2], k &#x3D; 4输出：[2,0,1] 简单链表操作，我们注意到移动的次数 k 可能会大于链表长度，所以必须要取模，这样一来移动的可能性只会为 [0,len-1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327103551873.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327103615484.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327103551873.png?">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210327103615484.png?">
 <meta property="article:published_time" content="2021-03-27T02:41:05.627Z">
 <meta property="article:modified_time" content="2021-03-27T02:41:05.627Z">
 <meta property="article:author" content="崽崽">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210327103551873.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210327103551873.png?">
 
 <link rel="canonical" href="https://qianlinyi.cn/blog/2021/03/27/LeetCode%2061%20%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/">
 
@@ -266,15 +266,12 @@
       
         <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/rotate-list/">题目链接</a></p>
 <p><font face="consolas">给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。</p>
-<h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><p><img src="https://img-blog.csdnimg.cn/20210327103551873.png" alt="在这里插入图片描述"></p>
+<h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><p><img src="https://img-blog.csdnimg.cn/20210327103551873.png?" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="built_in">head</span> = [1,2,3,4,5], k = 2</span><br><span class="line">输出：[4,5,1,2,3]</span><br></pre></td></tr></table></figure>
-
-<h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><p><img src="https://img-blog.csdnimg.cn/20210327103615484.png" alt="在这里插入图片描述"></p>
+<h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><p><img src="https://img-blog.csdnimg.cn/20210327103615484.png?" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：<span class="built_in">head</span> = [0,1,2], k = 4</span><br><span class="line">输出：[2,0,1]</span><br></pre></td></tr></table></figure>
-
 <p><font face="consolas">简单链表操作，我们注意到移动的次数 k 可能会大于链表长度，所以必须要取模，这样一来移动的可能性只会为 [0,len-1]，而 0 就相当于没移动，所以我们只需要只需要遍历一下列表，将左边 len-k 的部分拼接到右边的末尾即可，AC 代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rotateRight</span>(<span class="params">self, head: ListNode, k: <span class="built_in">int</span></span>) -&gt; ListNode:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:  <span class="comment"># 判空</span></span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        cnt, l = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        p = head  <span class="comment"># 计算链表长度</span></span><br><span class="line">        <span class="keyword">while</span> p:</span><br><span class="line">            p = p.<span class="built_in">next</span></span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        p = head</span><br><span class="line">        left = p  <span class="comment"># 链表右移的部分</span></span><br><span class="line">        k = k % l <span class="keyword">if</span> k % l <span class="keyword">else</span> l  <span class="comment"># 取模</span></span><br><span class="line">        <span class="keyword">while</span> p:</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> cnt == l - k:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            p = p.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p:  <span class="comment"># 移到距离刚好等于链表长度的话相当于没动</span></span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        right = p.<span class="built_in">next</span>  <span class="comment"># 链表左移的部分</span></span><br><span class="line">        p.<span class="built_in">next</span> = <span class="literal">None</span></span><br><span class="line">        p = right</span><br><span class="line">        <span class="keyword">while</span> p.<span class="built_in">next</span>:</span><br><span class="line">            p = p.<span class="built_in">next</span></span><br><span class="line">        p.<span class="built_in">next</span> = left</span><br><span class="line">        <span class="keyword">return</span> right</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -395,6 +392,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -564,6 +564,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

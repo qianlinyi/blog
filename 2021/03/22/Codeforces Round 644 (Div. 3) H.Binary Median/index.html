@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接 Consider all binary strings of length m (1≤m≤60). A binary string is a string that consists of the characters 0 and 1 only. For example, 0110 is a binary string, and 012aba is not. Obviously, the">
@@ -264,19 +264,17 @@
         <p><a target="_blank" rel="noopener" href="https://codeforces.ml/problemset/problem/1360/H">题目链接</a></p>
 <p><font face="consolas">Consider all binary strings of length m (1≤m≤60). A binary string is a string that consists of the characters 0 and 1 only. For example, 0110 is a binary string, and 012aba is not. Obviously, there are exactly 2m such strings in total.</p>
 <p><font face="consolas">The string s is lexicographically smaller than the string t (both have the same length m) if in the first position i from the left in which they differ, we have s[i]&lt;t[i]. This is exactly the way strings are compared in dictionaries and in most modern programming languages when comparing them in a standard way. For example, the string 01011 is lexicographically smaller than the string 01100, because the first two characters are the same, and the third character in the first string is less than that in the second.</p>
-<p><font face="consolas">We remove from this set $n (1≤n≤min(2^{m−1},100))$ distinct binary strings a1,a2,…,an, each of length m. Thus, the set will have k&#x3D;2m−n strings. Sort all strings of the resulting set in lexicographical ascending order (as in the dictionary).</p>
-<p><font face="consolas">We number all the strings after sorting from 0 to k−1. Print the string whose index is ⌊k−1⌋&#x2F;2 (such an element is called median), where ⌊x⌋ is the rounding of the number down to the nearest integer.</p>
-<p><font face="consolas">For example, if n&#x3D;3, m&#x3D;3 and a&#x3D;[010, 111, 001], then after removing the strings ai and sorting, the result will take the form: [000, 011, 100, 101, 110]. Thus, the desired median is 100.</p>
+<p><font face="consolas">We remove from this set $n (1≤n≤min(2^{m−1},100))$ distinct binary strings a1,a2,…,an, each of length m. Thus, the set will have k=2m−n strings. Sort all strings of the resulting set in lexicographical ascending order (as in the dictionary).</p>
+<p><font face="consolas">We number all the strings after sorting from 0 to k−1. Print the string whose index is ⌊k−1⌋/2 (such an element is called median), where ⌊x⌋ is the rounding of the number down to the nearest integer.</p>
+<p><font face="consolas">For example, if n=3, m=3 and a=[010, 111, 001], then after removing the strings ai and sorting, the result will take the form: [000, 011, 100, 101, 110]. Thus, the desired median is 100.</p>
 <h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a><font face="consolas">Input</h2><p><font face="consolas">The first line contains an integer t (1≤t≤1000) — the number of test cases. Then, t test cases follow.</p>
 <p><font face="consolas">The first line of each test case contains integers $n (1≤n≤min(2^{m−1},100))$ and m (1≤m≤60), where n is the number of strings to remove, and m is the length of binary strings. The next n lines contain a1,a2,…,an — distinct binary strings of length m.</p>
 <p><font face="consolas">The total length of all given binary strings in all test cases in one test does not exceed $10^5$.</p>
 <h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a><font face="consolas">Output</h2><p><font face="consolas">Print t answers to the test cases. For each test case, print a string of length m — the median of the sorted sequence of remaining strings in the corresponding test case.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a><font face="consolas">Example</h2><h3 id="input"><a href="#input" class="headerlink" title="input"></a><font face="consolas">input</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">3 3</span><br><span class="line">010</span><br><span class="line">001</span><br><span class="line">111</span><br><span class="line">4 3</span><br><span class="line">000</span><br><span class="line">111</span><br><span class="line">100</span><br><span class="line">011</span><br><span class="line">1 1</span><br><span class="line">1</span><br><span class="line">1 1</span><br><span class="line">0</span><br><span class="line">3 2</span><br><span class="line">00</span><br><span class="line">01</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
-
 <h3 id="output"><a href="#output" class="headerlink" title="output"></a><font face="consolas">output</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">100</span><br><span class="line">010</span><br><span class="line">0</span><br><span class="line">1</span><br><span class="line">11</span><br></pre></td></tr></table></figure>
 <p>这题用到了位运算，我们把所有二进制字符串转化为十进制存入数组 $a$，考虑到内存限制，$bitset$ 恰好完美地解决了这个问题，我们先定位要找的那个数的位置 $pos$，也即十进制里面的大小，然后遍历数组 $a$，如果有数小于等于 $pos$，则 $pos+1$，最后再将其转化为二进制输出即可，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    ll a[n];</span><br><span class="line">    string s;</span><br><span class="line">    ll ans = ((<span class="number">1LL</span> &lt;&lt; m) - n - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; s;</span><br><span class="line">        a[i] = <span class="built_in">bitset</span>&lt;<span class="number">64</span>&gt;(s).<span class="built_in">to_ullong</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(a, a + n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i:a) ans += (i &lt;= ans);</span><br><span class="line">    cout &lt;&lt; <span class="built_in">bitset</span>&lt;<span class="number">64</span>&gt;(ans).<span class="built_in">to_string</span>().<span class="built_in">substr</span>(<span class="number">64</span> - m) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) <span class="built_in">solve</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -397,6 +395,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -566,6 +567,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

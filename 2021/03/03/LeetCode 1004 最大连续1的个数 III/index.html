@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。 示例 1：12345输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2输出：6解释： [1,1,1,0,0,1,1,1,1,1,1]粗体数字从 0 翻转到 1，最长的子数组长度为 6。  示例 2：12345输入：A &#x3D; [0,0">
+  <meta name="description" content="题目链接 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。 示例 1：12345输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2输出：6解释： [1,1,1,0,0,1,1,1,1,1,1]粗体数字从 0 翻转到 1，最长的子数组长度为 6。 示例 2：12345输入：A &#x3D; [0,0,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1004 最大连续1的个数 III">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/03/LeetCode%201004%20%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD1%E7%9A%84%E4%B8%AA%E6%95%B0%20III/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。 示例 1：12345输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2输出：6解释： [1,1,1,0,0,1,1,1,1,1,1]粗体数字从 0 翻转到 1，最长的子数组长度为 6。  示例 2：12345输入：A &#x3D; [0,0">
+<meta property="og:description" content="题目链接 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。 返回仅包含 1 的最长（连续）子数组的长度。 示例 1：12345输入：A &#x3D; [1,1,1,0,0,0,1,1,1,1,0], K &#x3D; 2输出：6解释： [1,1,1,0,0,1,1,1,1,1,1]粗体数字从 0 翻转到 1，最长的子数组长度为 6。 示例 2：12345输入：A &#x3D; [0,0,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-03T07:42:01.735Z">
 <meta property="article:modified_time" content="2021-03-03T07:42:01.735Z">
@@ -265,12 +265,9 @@
 <p><font face="Consolas">给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。</p>
 <p><font face="Consolas">返回仅包含 1 的最长（连续）子数组的长度。</p>
 <h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [1,1,1,0,0,0,1,1,1,1,0], K = 2</span><br><span class="line">输出：6</span><br><span class="line">解释： </span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 6。</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入：A = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], K = 3</span><br><span class="line">输出：10</span><br><span class="line">解释：</span><br><span class="line">[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]</span><br><span class="line">粗体数字从 0 翻转到 1，最长的子数组长度为 10。</span><br></pre></td></tr></table></figure>
-
 <p>双指针~<br>这题和 <a href="https://qianlinyi.cn/2021/02/17/LeetCode%20424%20%E6%9B%BF%E6%8D%A2%E5%90%8E%E7%9A%84%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6/">LeetCode 424 替换后的最长重复字符</a> 方法一模一样，就是利用双指针的思想找最大区间，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestOnes</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;A, <span class="type">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>, n = A.<span class="built_in">size</span>(), num0 = <span class="number">0</span>, num1 = <span class="number">0</span>, mx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; n) &#123;</span><br><span class="line">            A[r] ? num1++ : num0++;</span><br><span class="line">            mx = <span class="built_in">max</span>(mx, num1);</span><br><span class="line">            <span class="keyword">if</span> (r - l + <span class="number">1</span> - mx &gt; K) &#123;</span><br><span class="line">                A[l] ? num1-- : num0--;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            r++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r - l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -391,6 +388,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -560,6 +560,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

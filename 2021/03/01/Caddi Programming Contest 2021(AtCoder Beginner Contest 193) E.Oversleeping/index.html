@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接 Problem StatementA train goes back and forth between Town A and Town B. It departs Town A at time 0 and then repeats the following:  goes to Town B, taking X seconds; stops at Town B for Y second">
@@ -269,7 +269,7 @@
 <li><font face="Consolas">goes to Town A, taking X seconds;</li>
 <li><font face="Consolas">stops at Town A for Y seconds.</li>
 </ul>
-<p><font face="Consolas">More formally, these intervals of time are half-open, that is, for each n&#x3D;0,1,2,…:</p>
+<p><font face="Consolas">More formally, these intervals of time are half-open, that is, for each n=0,1,2,…:</p>
 <ul>
 <li><font face="Consolas">at time t such that (2X+2Y)n≤t&lt;(2X+2Y)n+X, the train is going to Town B;</li>
 <li><font face="Consolas">at time t such that (2X+2Y)n+X≤t&lt;(2X+2Y)n+X+Y, the train is stopping at Town B;</li>
@@ -281,7 +281,7 @@
 <li><font face="Consolas">be asleep for P seconds;</li>
 <li><font face="Consolas">be awake for Q seconds.</li>
 </ul>
-<p><font face="Consolas">Again, these intervals of time are half-open, that is, for each n&#x3D;0,1,2,…:</p>
+<p><font face="Consolas">Again, these intervals of time are half-open, that is, for each n=0,1,2,…:</p>
 <ul>
 <li><font face="Consolas">at time t such that (P+Q)n≤t&lt;(P+Q)n+P, Takahashi is asleep;</li>
 <li><font face="Consolas">at time t such that (P+Q)n+P≤t&lt;(P+Q)(n+1), Takahashi is awake.</li>
@@ -289,11 +289,16 @@
 <p><font face="Consolas">He can get off the train at Town B if it is stopping at Town B and he is awake.Determine whether he can get off at Town B. If he can, find the earliest possible time to do so.Under the constraints of this problem, it can be proved that the earliest time is an integer.</p>
 <p><font face="Consolas">You are given T cases. Solve each of them.</p>
 <h2 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1"></a><font face="Consolas">Sample Input 1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5 2 7 6</span><br><span class="line">1 1 3 1</span><br><span class="line">999999999 1 1000000000 1</span><br></pre></td></tr></table></figure>
-
 <h2 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1"></a><font face="Consolas">Sample Output 1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Copy</span><br><span class="line">20</span><br><span class="line">infinity</span><br><span class="line">1000000000999999999</span><br></pre></td></tr></table></figure>
-<p>拓展欧几里得~<br>题目就是求一个同余方程组：<br>$$<br>\begin{cases}<br>t\equiv t1(mod \ (2X+2Y))\<br>t\equiv t2(mod \ (P+Q))\<br>\end{cases}<br>$$<br>两式相减可以得：<br>$$<br>(2X+2Y)x-(P+Q)y&#x3D;t2-t1<br>$$<br>因为题目中的 $Y,Q$ 都比较小，所以 $t1,t2$ 可以暴力遍历，上式可以通过拓展欧几里得定理求得一个特解 $x_0$，所以可以得到 $t$ 的一个特解 $t_0&#x3D;(2X+2Y)*x_0+t1$，那么通解就是 $t&#x3D;t_0+LCM(2X+2Y,P+Q)$，题目要求最小的正整数解，只需要将特解 $t_0$ 对 $LCM(2X+2Y,P+Q)$ 取模即可~<br>这题唯一的坑点就是会爆 $ll$，所以在最后算答案的时候要加快速乘，AC代码如下：</p>
+<p>拓展欧几里得~<br>题目就是求一个同余方程组：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+t\equiv t1(mod \ (2X+2Y))\\
+t\equiv t2(mod \ (P+Q))\\
+\end{cases}</script><p>两式相减可以得：</p>
+<script type="math/tex; mode=display">
+(2X+2Y)x-(P+Q)y=t2-t1</script><p>因为题目中的 $Y,Q$ 都比较小，所以 $t1,t2$ 可以暴力遍历，上式可以通过拓展欧几里得定理求得一个特解 $x_0$，所以可以得到 $t$ 的一个特解 $t_0=(2X+2Y)*x_0+t1$，那么通解就是 $t=t_0+LCM(2X+2Y,P+Q)$，题目要求最小的正整数解，只需要将特解 $t_0$ 对 $LCM(2X+2Y,P+Q)$ 取模即可~<br>这题唯一的坑点就是会爆 $ll$，所以在最后算答案的时候要加快速乘，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line">ll X, Y, ans, LCM, x, y, p, q, i, j;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Gcd</span><span class="params">(ll A, ll B, ll &amp;gcd)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (B) &#123;</span><br><span class="line">        <span class="built_in">Gcd</span>(B, A % B, gcd);</span><br><span class="line">        ll t = X;</span><br><span class="line">        X = Y;</span><br><span class="line">        Y = t - (A / B) * Y;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        gcd = A;</span><br><span class="line">        X = <span class="number">1</span>, Y = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">f</span><span class="params">(ll a, ll b, ll mod)</span> </span>&#123;</span><br><span class="line">    ll k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) k = (k + a) % mod;</span><br><span class="line">        a = (a + a) % mod;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">exgcd</span><span class="params">(ll A, ll B, ll C)</span> </span>&#123;</span><br><span class="line">    ll gcd;</span><br><span class="line">    <span class="built_in">Gcd</span>(A, B, gcd);</span><br><span class="line">    <span class="keyword">if</span> (C % gcd) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        X = X * (C / gcd);</span><br><span class="line">        <span class="keyword">if</span> (X &lt; <span class="number">0</span>) X = (LCM - (-X) % LCM) % LCM;</span><br><span class="line">        ans = <span class="built_in">min</span>(ans, (<span class="built_in">f</span>(<span class="number">2</span> * x + <span class="number">2</span> * y, X, LCM) + i) % LCM);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        ans = INT64_MAX;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y &gt;&gt; p &gt;&gt; q;</span><br><span class="line">        LCM = (<span class="number">2</span> * x + <span class="number">2</span> * y) / __gcd(<span class="number">2</span> * x + <span class="number">2</span> * y, p + q) * (p + q);</span><br><span class="line">        <span class="keyword">for</span> (i = x; i &lt; x + y; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (j = p; j &lt; p + q; j++) &#123;</span><br><span class="line">                <span class="built_in">exgcd</span>(<span class="number">2</span> * x + <span class="number">2</span> * y, -p - q, j - i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (ans == INT64_MAX) cout &lt;&lt; <span class="string">&quot;infinity\n&quot;</span>;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -414,6 +419,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -583,6 +591,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

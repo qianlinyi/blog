@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="2021牛客寒假算法基础集训营3 H.数字串题目链接 题目描述牛牛发现了一种方法可以将只包含小写字母的字符串按照以下方式使其转换成一个数字串：取其中的每个字母，$\mathit a$ 转换为 $\text 1$，$\mathit b$ 转换为 $\text 2……\mathit z$ 转换为 $\text 26$，然后将这些数字拼接起来。例如，$\mathit abcz$ 可以转换为 $\text">
@@ -266,11 +266,8 @@
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>一行一个长度不超过 $10^{6}$ 的小写字母字符串 $\mathit S$。</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>一行一个长度不超过 $2×10^{6}$ 的小写字母字符串 $\mathit T$。<br>如果无解，请输出 $\text -1$。<br>如果答案有解且你输出的字符串包含了除了小写字母以外的字符或长度超过了 $2×10^{6}$，那么你会得到“答案错误”的返回结果。<br>否则如果答案有解且你的答案与输入的字符串可以转换为一样的数字串，那么你的答案会被认为是正确的。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cwc</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cbcc</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccc</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
 <p>打 <font face="Consalos">ACM 的同仁们可以多了解一下 <font face="Consalos">py，针对字符串类 <font face="Consalos">py 提供了大量现成的函数，非常方便，拿这题举例，我们很容易发现替换其实就是以下几种情况：</p>
 <ul>
@@ -282,7 +279,6 @@
 </ul>
 <p>也就是说我们只需要把上述情况都试一遍，如果替换之后都和原串一样，直接输出 $-1$ 即可，如果替换之后和原串不一样就是正确答案，注意 $t$ 这个字符对应的 $20$ 无法转换成两个字符，特判掉即可，上述的替换在 <font face="Consalos">py 里直接有一个 <font face="Consalos">replace 函数，AC代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">s = <span class="built_in">input</span>()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">11</span>, <span class="number">27</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">20</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    a = s.replace(<span class="built_in">chr</span>(<span class="number">97</span> + i - <span class="number">1</span>), <span class="built_in">chr</span>(<span class="number">97</span> + i // <span class="number">10</span> - <span class="number">1</span>) + <span class="built_in">chr</span>(<span class="number">97</span> + i % <span class="number">10</span> - <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">if</span> a != s:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        sys.exit(<span class="number">0</span>)</span><br><span class="line">    a = s.replace(<span class="built_in">chr</span>(<span class="number">97</span> + i // <span class="number">10</span> - <span class="number">1</span>) + <span class="built_in">chr</span>(<span class="number">97</span> + i % <span class="number">10</span> - <span class="number">1</span>), <span class="built_in">chr</span>(<span class="number">97</span> + i - <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">if</span> a != s:</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        sys.exit(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -403,6 +399,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -572,6 +571,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

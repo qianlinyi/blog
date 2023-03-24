@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 题目描述整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right">
+  <meta name="description" content="题目链接 题目描述整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$ 的大小总是严">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021牛客寒假算法基础集训营2 D.牛牛与整除分块">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/02/25/2021%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A52%20D.%E7%89%9B%E7%89%9B%E4%B8%8E%E6%95%B4%E9%99%A4%E5%88%86%E5%9D%97/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 题目描述整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right">
+<meta property="og:description" content="题目链接 题目描述整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$ 的大小总是严">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-25T08:06:09.943Z">
 <meta property="article:modified_time" content="2021-02-25T08:06:09.943Z">
@@ -262,17 +262,15 @@
 
       
         <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/9982/D">题目链接</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。<br>整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$ 的大小总是严格小于 $2 \sqrt N$ 。<br>例如当 $N&#x3D;10$ 时 $S&#x3D;{10,5,3,2,1}$，这就使得对于 $\left \lfloor \frac{N}{i} \right \rfloor$ 类型的求和类问题，只要快速枚举 $S$ 集合，就能在 $\sqrt N$ 级别的复杂度内解决问题。</p>
-<p>$\left \lfloor ; ; \right \rfloor$ 符号是向下取整符，$\left \lfloor x \right \rfloor$ 表示不大于 $x$ 的最大正整数</p>
-<p>牛牛在学习整除分块这一算法后提出了一个新的问题，对于给定正整数 $N,x$，令$S&#x3D;\left { x:x&#x3D;\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$，时 $\left \lfloor \frac{N}{x} \right \rfloor$在 $S$ 中是第几大呢（去重降序排序后第几个）？</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>整除分块，又称数论分块。是数论算法中的重要技巧，你可以在各种需要枚举因子的连续求和类问题中见到它的身影。如杜教筛，莫比乌斯反演化简后的整除分段求和等。<br>整除分块基于这样一个数学现象：对于任意正整数 $N$，集合 $S=\left { x:x=\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$ 的大小总是严格小于 $2 \sqrt N$ 。<br>例如当 $N=10$ 时 $S={10,5,3,2,1}$，这就使得对于 $\left \lfloor \frac{N}{i} \right \rfloor$ 类型的求和类问题，只要快速枚举 $S$ 集合，就能在 $\sqrt N$ 级别的复杂度内解决问题。</p>
+<p>$\left \lfloor \; \; \right \rfloor$ 符号是向下取整符，$\left \lfloor x \right \rfloor$ 表示不大于 $x$ 的最大正整数</p>
+<p>牛牛在学习整除分块这一算法后提出了一个新的问题，对于给定正整数 $N,x$，令$S=\left { x:x=\left \lfloor \frac{N}{i} \right \rfloor ,i\in 1,2,3…N \right }$，时 $\left \lfloor \frac{N}{x} \right \rfloor$在 $S$ 中是第几大呢（去重降序排序后第几个）？</p>
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>第一行输入一个正整数 $T(1 \leq T \leq 10^6)$，表示测试案例的数目，对于每组案例。<br>一行两个正整数 $N,x(1 \leq x \leq N \leq 10^9)$</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>对于每个案例，输出一个正整数，即 $\left \lfloor \frac{N}{x} \right \rfloor$ 在集合 $S$ 中降序排第几大。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">25 9</span><br><span class="line">1000000000 1000000000</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8</span><br><span class="line">63244</span><br></pre></td></tr></table></figure>
-<p>数论+打表~<br>我一开始直接上分块，但是 $O(T<em>\sqrt n)$ 的复杂度显然不行，所以只能打表找规律~<br>打表很容易发现 $k\leq \sqrt n$ 时答案就是 $k$，而另一半正好对称，我们可以假设 $\sqrt n$ 为一条对称轴，那么对于所有大于 $\sqrt n$ 的数 $num$，都有 $num+\lfloor \frac{n}{num}\rfloor&#x3D;2</em>\sqrt n$，注意当 $n$ 为完全平方数的时候，对称轴会往左移一个单位，加一个 $bool$ 变量判断即可，AC代码如下：</p>
+<p>数论+打表~<br>我一开始直接上分块，但是 $O(T<em>\sqrt n)$ 的复杂度显然不行，所以只能打表找规律~<br>打表很容易发现 $k\leq \sqrt n$ 时答案就是 $k$，而另一半正好对称，我们可以假设 $\sqrt n$ 为一条对称轴，那么对于所有大于 $\sqrt n$ 的数 $num$，都有 $num+\lfloor \frac{n}{num}\rfloor=2</em>\sqrt n$，注意当 $n$ 为完全平方数的时候，对称轴会往左移一个单位，加一个 $bool$ 变量判断即可，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> t, n, k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>, &amp;n, &amp;k);</span><br><span class="line">        <span class="type">int</span> s = <span class="built_in">sqrt</span>(n);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, k &lt;= s ? k : <span class="number">2</span> * s - n / k + (s != n / s));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -393,6 +391,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -562,6 +563,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

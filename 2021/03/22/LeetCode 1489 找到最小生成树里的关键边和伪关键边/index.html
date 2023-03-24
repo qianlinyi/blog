@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图">
+  <meta name="description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图中最小生成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1489 找到最小生成树里的关键边和伪关键边">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图">
+<meta property="og:description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图中最小生成">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209110503489.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2021020911051727.png">
@@ -267,19 +267,16 @@
 
       
         <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/">题目描述</a></p>
-<p>给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。</p>
+<p>给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] = [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。</p>
 <p>请你找到给定图中最小生成树的所有关键边和伪关键边。如果从图中删去某条边，会导致最小生成树的权值和增加，那么我们就说它是一条关键边。伪关键边则是可能会出现在某些最小生成树中但不会出现在所有最小生成树中的边。</p>
 <p>请注意，你可以分别以任意顺序返回关键边的下标和伪关键边的下标。</p>
 <h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><p><img src="https://img-blog.csdnimg.cn/20210209110503489.png" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 5, edges = [[0,1,1],[1,2,1],[2,3,2],[0,3,2],[0,4,3],[3,4,3],[1,4,6]]</span><br><span class="line">输出：[[0,1],[2,3,4,5]]</span><br><span class="line">解释：上图描述了给定图。</span><br><span class="line">下图是所有的最小生成树。</span><br><span class="line">注意到第 0 条边和第 1 条边出现在了所有最小生成树中，所以它们是关键边，我们将这两个下标作为输出的第一个列表。</span><br><span class="line">边 2，3，4 和 5 是所有 MST 的剩余边，所以它们是伪关键边。我们将它们作为输出的第二个列表。</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://img-blog.csdnimg.cn/2021020911051727.png" alt="在这里插入图片描述"></p>
 <h2 id="示例-2-："><a href="#示例-2-：" class="headerlink" title="示例 2 ："></a>示例 2 ：</h2><p><img src="https://img-blog.csdnimg.cn/20210209110547569.png" alt="在这里插入图片描述"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 4, edges = [[0,1,1],[1,2,1],[2,3,1],[0,3,1]]</span><br><span class="line">输出：[[],[0,1,2,3]]</span><br><span class="line">解释：可以观察到 4 条边都有相同的权值，任选它们中的 3 条可以形成一棵 MST 。所以 4 条边都是伪关键边。</span><br></pre></td></tr></table></figure>
-
-<p>这题的关键是找边，所以只能用最小生成树的 Kruskal 算法。<br>我们先给所有边编号，先求一遍最小生成树的权值和 $value$，然后依次遍历所有边 $i$，先算去掉边 $i$ 的最小生成树的权值和 $v$，若此时无法构造最小生成树或者 $v&gt;value$，则这条边一定是关键边；再算伪关键边，我们加上这条边的权值，再算一次最小生成树的权值和 $v$，若 $v&#x3D;value$，证明该边没有出现在所有的最小生成树中，一定是伪关键边，AC代码如下：</p>
+<p>这题的关键是找边，所以只能用最小生成树的 Kruskal 算法。<br>我们先给所有边编号，先求一遍最小生成树的权值和 $value$，然后依次遍历所有边 $i$，先算去掉边 $i$ 的最小生成树的权值和 $v$，若此时无法构造最小生成树或者 $v&gt;value$，则这条边一定是关键边；再算伪关键边，我们加上这条边的权值，再算一次最小生成树的权值和 $v$，若 $v=value$，证明该边没有出现在所有的最小生成树中，一定是伪关键边，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Unionset</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; father;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; sum;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        father.<span class="built_in">resize</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) father[i] = i;</span><br><span class="line">        sum.<span class="built_in">resize</span>(n);</span><br><span class="line">        cnt = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findFather</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x == father[x] ? x : father[x] = <span class="built_in">findFather</span>(father[x]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">Union</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">        x = <span class="built_in">findFather</span>(x), y = <span class="built_in">findFather</span>(y);</span><br><span class="line">        <span class="keyword">if</span> (x == y) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (sum[x] &lt; sum[y]) <span class="built_in">swap</span>(x, y);</span><br><span class="line">        father[y] = x;</span><br><span class="line">        sum[x] += sum[y];</span><br><span class="line">        --cnt;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">findCriticalAndPseudoCriticalEdges</span>(<span class="type">int</span> n, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; &amp;edges) &#123;</span><br><span class="line">        <span class="type">int</span> m = edges.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) edges[i].<span class="built_in">push_back</span>(i);</span><br><span class="line">        <span class="built_in">sort</span>(edges.<span class="built_in">begin</span>(), edges.<span class="built_in">end</span>(), [](<span class="type">const</span> <span class="keyword">auto</span> &amp;u, <span class="type">const</span> <span class="keyword">auto</span> &amp;v) &#123; <span class="keyword">return</span> u[<span class="number">2</span>] &lt; v[<span class="number">2</span>]; &#125;);</span><br><span class="line">        <span class="type">int</span> value = <span class="number">0</span>;</span><br><span class="line">        Unionset a = <span class="built_in">Unionset</span>();</span><br><span class="line">        a.<span class="built_in">init</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i:edges) <span class="keyword">if</span> (a.<span class="built_in">Union</span>(i[<span class="number">0</span>], i[<span class="number">1</span>])) value += i[<span class="number">2</span>];</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">ans</span>(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            Unionset b = <span class="built_in">Unionset</span>();</span><br><span class="line">            b.<span class="built_in">init</span>(n);</span><br><span class="line">            <span class="type">int</span> v = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i != j &amp;&amp; b.<span class="built_in">Union</span>(edges[j][<span class="number">0</span>], edges[j][<span class="number">1</span>])) v += edges[j][<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (b.cnt != <span class="number">1</span> || (b.cnt == <span class="number">1</span> &amp;&amp; v &gt; value)) &#123;</span><br><span class="line">                ans[<span class="number">0</span>].<span class="built_in">emplace_back</span>(edges[i][<span class="number">3</span>]);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Unionset c = <span class="built_in">Unionset</span>();</span><br><span class="line">            c.<span class="built_in">init</span>(n);</span><br><span class="line">            c.<span class="built_in">Union</span>(edges[i][<span class="number">0</span>], edges[i][<span class="number">1</span>]);</span><br><span class="line">            v = edges[i][<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i != j &amp;&amp; c.<span class="built_in">Union</span>(edges[j][<span class="number">0</span>], edges[j][<span class="number">1</span>])) v += edges[j][<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (v == value) ans[<span class="number">1</span>].<span class="built_in">push_back</span>(edges[i][<span class="number">3</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -401,6 +398,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -570,6 +570,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

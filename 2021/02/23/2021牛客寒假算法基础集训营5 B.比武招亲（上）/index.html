@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="2021牛客寒假算法基础集训营5 B.比武招亲（上）题目链接 题目描述众所周知，天姐姐只喜欢天下最聪明的人，为了找到这样的人，她决定比武招亲！ 只见天姐姐在榜上留下了这样一道问题，谁做出来了就可以俘获她的芳心！ 爱慕天姐姐已久的泽鸽鸽问询赶来，只见榜上写着： 给定 $n,m$，定义一种序列，构造方法如下：  在 $[1,n]$ 中任意选择 $m$ 次，得到了 $m$ 个整数（显然数字可能相同）;">
@@ -269,10 +269,10 @@
 <ol>
 <li><p>在 $[1,n]$ 中任意选择 $m$ 次，得到了 $m$ 个整数（显然数字可能相同）;</p>
 </li>
-<li><p>将选出的 $m$ 个数字排序之后得到一个序列 ${ a_{1},a_{2},…,a_{m} }$。</p>
+<li><p>将选出的 $m$ 个数字排序之后得到一个序列 ${ a<em>{1},a</em>{2},…,a_{m} }$。</p>
 </li>
 </ol>
-<p>定义一个序列的贡献为 $max{ a_{1},a_{2},…,a_{m} }-min{ a_{1},a_{2},…,a_{m}}$，求所有本质不同的序列的贡献和。</p>
+<p>定义一个序列的贡献为 $max{ a<em>{1},a</em>{2},…,a<em>{m} }-min{ a</em>{1},a<em>{2},…,a</em>{m}}$，求所有本质不同的序列的贡献和。</p>
 <p>为了防止结果过大，将答案为 $998244353$ 取模后输出。</p>
 <p>（对于两个序列长度为 $m$ 的序列 A、B，若 ${\exists}i∈[1,m]$，$A_i\neq B_i$，则序列 A、B 本质不同）</p>
 <p>泽鸽鸽心有余而力不足，而你作为他最好的基友决定帮助泽鸽鸽俘获美人心！</p>
@@ -280,13 +280,11 @@
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>一行输入两个正整数 $n$，$m$</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>一行一个整数，为答案对 $998244353$ 取模后的结果。</p>
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
-<p>数论~<br>这种题目最简单的方法就是打表找规律，除非你是数论大师😂<br>很容易发现出现的差值就是 $[0,n-1]$ 一共 $n$ 种情况，关键点就在于这些插值出现了多少次，当 $m&#x3D;2$ 时，我们很容易找到如下规律：</p>
+<p>数论~<br>这种题目最简单的方法就是打表找规律，除非你是数论大师😂<br>很容易发现出现的差值就是 $[0,n-1]$ 一共 $n$ 种情况，关键点就在于这些插值出现了多少次，当 $m=2$ 时，我们很容易找到如下规律：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0:n</span><br><span class="line">1:n-1</span><br><span class="line">2:n-2</span><br><span class="line">......</span><br><span class="line">n-1:1</span><br></pre></td></tr></table></figure>
 <p>而当 $m&gt;2$ 时，出现的次数就是乘上一个 $C^{m-2}_{i+1+m-3},i\in[0,n-1]$，那么我们只需要预处理 $1e6$ 内的组合数，就可以在 $O(n)$ 的时间内算出答案了，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> ll mod = <span class="number">998244353</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">5</span>;</span><br><span class="line">ll n, m, F[N + <span class="number">1</span>], I[N + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">power</span><span class="params">(ll a, ll b)</span> </span>&#123; <span class="keyword">return</span> b ? <span class="built_in">power</span>(a * a % mod, b / <span class="number">2</span>) * (b % <span class="number">2</span> ? a : <span class="number">1</span>) % mod : <span class="number">1</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    F[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>; i &lt;= N; i++) F[i] = F[i - <span class="number">1</span>] * i % mod;</span><br><span class="line">    I[N] = <span class="built_in">power</span>(F[N], mod - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">for</span> (ll i = N; i--;) &#123;</span><br><span class="line">        I[i] = I[i + <span class="number">1</span>] * (i + <span class="number">1</span>) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">C</span><span class="params">(ll n, ll k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> F[n] * I[n - k] % mod * I[k] % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    ll ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (ll i = <span class="number">0</span>; i &lt;= n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        ans = (ans + (n - i) % mod * <span class="built_in">C</span>(i + <span class="number">1</span> + m - <span class="number">3</span>, m - <span class="number">2</span>) % mod * i) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -407,6 +405,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -576,6 +577,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

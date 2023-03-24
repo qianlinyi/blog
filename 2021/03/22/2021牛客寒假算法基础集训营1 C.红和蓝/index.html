@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接 题目描述你拿到了一棵树，请你给每个顶点染成红色或蓝色。要求：每个红点周围有且仅有一个红点，每个蓝点周围有且仅有一个蓝点。“周围”的定义：某点周围的点指通过邻边直接连接的点。所谓树，即没有自环、重边和回路的无向连通图。 输入描述:第一行一个正整数 $n$，代表树的顶点个数。$(1 \leq n \leq 100000)$接下来的 $n-1$ 行，每行两个正整数 $u$ 和 $v$，代表点">
@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="旺崽的博客">
 <meta property="og:description" content="题目链接 题目描述你拿到了一棵树，请你给每个顶点染成红色或蓝色。要求：每个红点周围有且仅有一个红点，每个蓝点周围有且仅有一个蓝点。“周围”的定义：某点周围的点指通过邻边直接连接的点。所谓树，即没有自环、重边和回路的无向连通图。 输入描述:第一行一个正整数 $n$，代表树的顶点个数。$(1 \leq n \leq 100000)$接下来的 $n-1$ 行，每行两个正整数 $u$ 和 $v$，代表点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210210155538966.jpg#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210210155538966.jpg?#pic_center">
 <meta property="article:published_time" content="2021-03-22T12:26:29.587Z">
 <meta property="article:modified_time" content="2021-03-22T12:26:29.587Z">
 <meta property="article:author" content="崽崽">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="思维">
 <meta property="article:tag" content="DFS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210210155538966.jpg#pic_center">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210210155538966.jpg?#pic_center">
 
 <link rel="canonical" href="https://qianlinyi.cn/blog/2021/03/22/2021%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51%20C.%E7%BA%A2%E5%92%8C%E8%93%9D/">
 
@@ -269,15 +269,11 @@
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>第一行一个正整数 $n$，代表树的顶点个数。$(1 \leq n \leq 100000)$<br>接下来的 $n-1$ 行，每行两个正整数 $u$ 和 $v$，代表点 $u$ 和点 $v$ 有一条边连接。    $(1 \leq u,v \leq n)$<br>保证输入的一定是一棵合法的树。</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>如果可以达成染色的要求，请输出一个长度为 $n$ 的字符串，第  $i$ 个字符代表第  $i$ 个顶点的染色情况，’B’ 代表蓝色，’R’ 代表红色。（若有多种合法染色的方法，输出任意一种即可）<br>否则直接输出 $-1$。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RRBB</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
-<p>题解写得有点复杂，我换种思路，采取自底向上染色的方法，对一个叶子结点来说，显然它只能和其父亲同色，我们就给其一对相同的编号，若遍历一遍树刚好能拆成偶数对，证明可以染色，那再遍历一遍染色即可，编号过程如下图：<br><img src="https://img-blog.csdnimg.cn/20210210155538966.jpg#pic_center" alt="在这里插入图片描述"><br>若在编号过程中发现某一结点的父亲已经染色，证明其父亲已和其他结点组成一对，那么这个结点必无法染色，则直接输出 $-1$ 即可，AC代码如下：</p>
+<p>题解写得有点复杂，我换种思路，采取自底向上染色的方法，对一个叶子结点来说，显然它只能和其父亲同色，我们就给其一对相同的编号，若遍历一遍树刚好能拆成偶数对，证明可以染色，那再遍历一遍染色即可，编号过程如下图：<br><img src="https://img-blog.csdnimg.cn/20210210155538966.jpg?#pic_center" alt="在这里插入图片描述"><br>若在编号过程中发现某一结点的父亲已经染色，证明其父亲已和其他结点组成一对，那么这个结点必无法染色，则直接输出 $-1$ 即可，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; G[N];</span><br><span class="line"><span class="type">int</span> n, x, y, cnt, id[N] = &#123;<span class="number">1</span>&#125;, ans[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs1</span><span class="params">(<span class="type">int</span> son, <span class="type">int</span> father)</span> </span>&#123;<span class="comment">//编号</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> kid:G[son]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (kid != father) <span class="built_in">dfs1</span>(kid, son);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!id[son]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (id[father]) &#123;<span class="comment">//若父亲结点已被编号直接输出-1</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;-1\n&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        id[father] = id[son] = ++cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> son, <span class="type">int</span> father, <span class="type">int</span> color)</span> </span>&#123;<span class="comment">//染色</span></span><br><span class="line">    ans[son] = color;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> kid:G[son]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (kid != father) <span class="built_in">dfs2</span>(kid, son, (id[kid] == id[son] ? color : color ^ <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">        G[x].<span class="built_in">push_back</span>(y);</span><br><span class="line">        G[y].<span class="built_in">push_back</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">dfs1</span>(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">dfs2</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">putchar</span>(ans[i] ? <span class="string">&#x27;R&#x27;</span> : <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -399,6 +395,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -568,6 +567,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

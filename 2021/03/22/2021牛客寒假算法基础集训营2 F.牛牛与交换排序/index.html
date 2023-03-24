@@ -20,7 +20,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="题目链接 题目描述牛牛有一个数组，数组元素是 $1$ 到 $n$ 的排列，即数组的值在 $1\sim n$ 范围内，且每个数字仅出现 $1$ 次。牛牛想要将该数组变为升序排列的，他可以进行如下的操作。 首先他要确定一个长度 $k$，$k$ 的范围在 $1\sim n$ 之间。接下来他将会进行若干次操作。在每轮操作中他都可以选择一段长度为k的子数组，然后进行区间的翻转操作。 他可以做任意次数的操作，">
@@ -264,30 +264,24 @@
         <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/9982/F">题目链接</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>牛牛有一个数组，数组元素是 $1$ 到 $n$ 的排列，即数组的值在 $1\sim n$ 范围内，且每个数字仅出现 $1$ 次。<br>牛牛想要将该数组变为升序排列的，他可以进行如下的操作。</p>
 <p>首先他要确定一个长度 $k$，$k$ 的范围在 $1\sim n$ 之间。<br>接下来他将会进行若干次操作。在每轮操作中他都可以选择一段长度为k的子数组，然后进行区间的翻转操作。</p>
-<p>他可以做任意次数的操作，但是要求他每次选择的子数组区间满足 $l_i \leq l_{i+1}$，并且区间长度等于一开始选定的 $k$，也就是说一旦某一次操作选择了数组的某个位置进行区间翻转操作，下一次做区间翻转的位置将会比上一次更靠右。</p>
+<p>他可以做任意次数的操作，但是要求他每次选择的子数组区间满足 $l<em>i \leq l</em>{i+1}$，并且区间长度等于一开始选定的 $k$，也就是说一旦某一次操作选择了数组的某个位置进行区间翻转操作，下一次做区间翻转的位置将会比上一次更靠右。</p>
 <p>牛牛发现，并不总是存在一个 $k$ 可以使得数组排序变为有序，请你告诉牛牛是否存在一个 $k$ 能够在满足规则的情况下完成排序。</p>
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>第一行输入一个正整数 $n(1 \leq n \leq 10^5)$ 表示数组的大小。<br>接下来输出一行 $n$ 个正整数表示一个排列，即每个数的大小范围在 $1$ 到 $n$ 且每个正整数仅出现一次。</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>如果存在至少一个 $k$ 能够使牛牛完成排序，请先在一行中输出一个 “yes”，然后另起一行输出一个可以满足排序的k，要求k的范围在 $\left[ 1,n \right]$ 之间，如果有多解，你可以输出任意一个。</p>
 <p>反之如果不存在任何一个k可以完成排序，请直接在一行输出一个 “no”</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">5 2 1 4 3</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yes</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yes</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例3"><a href="#示例3" class="headerlink" title="示例3"></a>示例3</h2><h3 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">5 4 3 2 1</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yes</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-<p>思维+模拟~<br>因为每次区间的选择都只能往右走，也就是对某一位置 $i$，若它的 $pos[i]$(它在所给数组中的位置)在右边，那么必须只能一次操作将其换回原位，也就是说我们只要找到第一个不在原位置的 $i$，那么 $k$ 一定就是 $pos[i]-i+1$~<br>找到该位置后我们就要去想用什么数据结构能模拟一次排序数组的过程，显然这个数据要能从头取，也能从尾取，所以很容易想到双端队列，对翻转这个操作我们通常的技巧就是设置一个翻转标记，而不需要真的把队列翻转，例如原本翻转标记 $flag&#x3D;0$，我们这是从队头弹出，队尾插入，翻转后只需要从队尾弹出，队头插入即可，STL 里面就有 $deque$ 这个数据结构，不熟悉的同学可以去自学一下~<br>整个模拟过程简单描述如下：</p>
+<p>思维+模拟~<br>因为每次区间的选择都只能往右走，也就是对某一位置 $i$，若它的 $pos[i]$(它在所给数组中的位置)在右边，那么必须只能一次操作将其换回原位，也就是说我们只要找到第一个不在原位置的 $i$，那么 $k$ 一定就是 $pos[i]-i+1$~<br>找到该位置后我们就要去想用什么数据结构能模拟一次排序数组的过程，显然这个数据要能从头取，也能从尾取，所以很容易想到双端队列，对翻转这个操作我们通常的技巧就是设置一个翻转标记，而不需要真的把队列翻转，例如原本翻转标记 $flag=0$，我们这是从队头弹出，队尾插入，翻转后只需要从队尾弹出，队头插入即可，STL 里面就有 $deque$ 这个数据结构，不熟悉的同学可以去自学一下~<br>整个模拟过程简单描述如下：</p>
 <ul>
 <li>先存 $k$ 个元素</li>
 <li>每次拿位置 $i$ 和队头队尾进行匹配，匹配成功执行相应的弹出插入操作和修改对应的翻转标记，不匹配直接输出 $no$ 即可</li>
 </ul>
 <p>AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> n, k, flag = <span class="number">0</span>, a[N], pos[N];</span><br><span class="line">deque&lt;<span class="type">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        pos[a[i]] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (pos[i] != i) &#123;</span><br><span class="line">            k = pos[i] - i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!k) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;yes\n&quot;</span> &lt;&lt; <span class="string">&quot;1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; i++) q.<span class="built_in">push_back</span>(a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = k + <span class="number">1</span>; i &lt;= n + k; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!(flag % <span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i - k == q.<span class="built_in">front</span>()) q.<span class="built_in">pop_front</span>();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i - k == q.<span class="built_in">back</span>()) flag ^= <span class="number">1</span>, q.<span class="built_in">pop_back</span>();</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (flag % <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i - k == q.<span class="built_in">back</span>()) q.<span class="built_in">pop_back</span>();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (i - k == q.<span class="built_in">front</span>()) flag ^= <span class="number">1</span>, q.<span class="built_in">pop_front</span>();</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                cout &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i &lt;= n) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag % <span class="number">2</span>) q.<span class="built_in">push_front</span>(a[i]);</span><br><span class="line">            <span class="keyword">else</span> q.<span class="built_in">push_back</span>(a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;yes\n&quot;</span> &lt;&lt; k;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -408,6 +402,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -577,6 +574,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

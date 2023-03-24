@@ -20,22 +20,22 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：MyQR官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 pip 命令安装。下载完后导包： 1from MyQ">
+  <meta name="description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：[MyQR](https:&#x2F;&#x2F;github.com&#x2F;qiulongquan&#x2F;MyQR)官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python小项目——生成个性二维码">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：MyQR官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 pip 命令安装。下载完后导包： 1from MyQ">
+<meta property="og:description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：[MyQR](https:&#x2F;&#x2F;github.com&#x2F;qiulongquan&#x2F;MyQR)官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209120917966.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209121913666.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209121659329.png#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209135907655.jpg#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209135937543.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209140751419.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209135937543.png?#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209140751419.png?#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209141326715.gif#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20210209141504720.gif#pic_center">
 <meta property="article:published_time" content="2021-03-22T12:26:16.789Z">
@@ -268,9 +268,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>现代社交离不开微信，<font face="Consolas">QQ，那么今天就教你用 <font face="Consolas">Python 生成自己的个性二维码😎<br>这里用到了 MyQR 库，下面是 github 的地址：<br><a target="_blank" rel="noopener" href="https://github.com/qiulongquan/MyQR"><font face="Consolas">MyQR</font></a><br>官方介绍：<br>制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 <font face="Consolas">Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 <font face="Consolas">pip 命令安装。<br>下载完后导包：</p>
+        <p>现代社交离不开微信，<font face="Consolas">QQ，那么今天就教你用 <font face="Consolas">Python 生成自己的个性二维码😎<br>这里用到了 MyQR 库，下面是 github 的地址：<br>[<font face="Consolas">MyQR</font>](<a target="_blank" rel="noopener" href="https://github.com/qiulongquan/MyQR">https://github.com/qiulongquan/MyQR</a>)<br>官方介绍：<br>制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 <font face="Consolas">Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 <font face="Consolas">pip 命令安装。<br>下载完后导包：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br></pre></td></tr></table></figure>
-
 <p>下面就让我们来看看里面最主要的 <font face="Consolas">run 函数，源码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">words, version=<span class="number">1</span>, level=<span class="string">&#x27;H&#x27;</span>, picture=<span class="literal">None</span>, colorized=<span class="literal">False</span>, contrast=<span class="number">1.0</span>, brightness=<span class="number">1.0</span>, save_name=<span class="literal">None</span>, save_dir=os.getcwd(<span class="params"></span>)</span>):</span><br></pre></td></tr></table></figure>
 <h2 id="words"><a href="#words" class="headerlink" title="words"></a><font face="Consolas">words</h2><p><font face="Consolas">words</font> 里面放的就是二维码的内容，举个例子：</p>
@@ -281,21 +280,17 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p>生成如下图片：<br><img src="https://img-blog.csdnimg.cn/20210209121913666.png#pic_center" alt="在这里插入图片描述"><br>扫码就能直接进入百度界面~<br>那么如何添加我们个人的二维码呢？我们只需要将我们的QQ或者微信二维码解析一下 <a target="_blank" rel="noopener" href="https://cli.im/deqr">草料二维码(将二维码图片上传解码)</a> 得到地址，下面是我解析我的QQ二维码获得的地址，并用该地址生成了二维码(有人可能会问，我用二维码图片再生成二维码图片，我是不是脑子有问题😒，别急，下面教你把二维码跟图片结合)：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://img-blog.csdnimg.cn/20210209121659329.png#pic_center" alt="在这里插入图片描述"></p>
 <h2 id="picture"><a href="#picture" class="headerlink" title="picture"></a><font face="Consolas">picture</font></h2><p>这是比较强大的一个地方，可以将二维码和图片结合，注意如果图片不是和 py 文件在同一目录下会报错，这次我用下图和上述的QQ二维码解码地址结合：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         picture=<span class="string">&#x27;1.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209135907655.jpg#pic_center" alt="在这里插入图片描述"><br>效果如下：<br><img src="https://img-blog.csdnimg.cn/20210209135937543.png#pic_center" alt="在这里插入图片描述"><br>不难发现这是黑白的，明显更丑了，所以我们用到了下面第三个参数😀</p>
+<p><img src="https://img-blog.csdnimg.cn/20210209135907655.jpg#pic_center" alt="在这里插入图片描述"><br>效果如下：<br><img src="https://img-blog.csdnimg.cn/20210209135937543.png?#pic_center" alt="在这里插入图片描述"><br>不难发现这是黑白的，明显更丑了，所以我们用到了下面第三个参数😀</p>
 <h2 id="colorized"><a href="#colorized" class="headerlink" title="colorized"></a><font face="Consolas">colorized</font></h2><p><font face="Consolas">bool</font> 类型，设置为 <font face="Consolas">True</font> 时即可看到彩色的二维码图片了，还是用上面的图片举例：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myqr.<span class="built_in">run</span>(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         colorized=True,</span><br><span class="line">         picture=<span class="string">&#x27;1.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20210209140751419.png#pic_center" alt="在这里插入图片描述"><br>这效果不就来了，你们找喜欢的图片与二维码结合即可~<br>下面介绍一下这个函数非常强大的一个功能：动态二维码</p>
+<p><img src="https://img-blog.csdnimg.cn/20210209140751419.png?#pic_center" alt="在这里插入图片描述"><br>这效果不就来了，你们找喜欢的图片与二维码结合即可~<br>下面介绍一下这个函数非常强大的一个功能：动态二维码</p>
 <h2 id="动态二维码"><a href="#动态二维码" class="headerlink" title="动态二维码"></a>动态二维码</h2><p><font face="Consolas">picture</font> 不仅能放静图，还能放 <font face="Consolas">GIF</font> 动图，比如我用下面这张图片</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         colorized=<span class="literal">True</span>,</span><br><span class="line">         picture=<span class="string">&#x27;1.gif&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 <p><img src="https://img-blog.csdnimg.cn/20210209141326715.gif#pic_center" alt="在这里插入图片描述"><br>效果如下：<br><img src="https://img-blog.csdnimg.cn/20210209141504720.gif#pic_center" alt="在这里插入图片描述"><br>学到这里你就掌握了生成个性二维码的诀窍了，是不是很简单，不仅微信和QQ可以，你们同样可以给自己的网站(博客，微博，gihub)等生成个性二维码，下面再补充一个小点</p>
-<h2 id="save-name"><a href="#save-name" class="headerlink" title="save_name"></a><font face="Consolas">save_name</h2><p>设置生成图片的名字和格式，比如可以把 <font face="Consolas">JPG 格式的可以保存成 <font face="Consolas">PNG 格式的图片，保存的位置和 <font face="Consolas">py文件同一目录，下面挂一段代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br><span class="line">myqr.run(</span><br><span class="line">    words=<span class="string">&#x27;https://u.wechat.com/MHPhZxXSgAvAzy_oDqCUPkg&#x27;</span>,</span><br><span class="line">    picture=<span class="string">&#x27;1.jpg&#x27;</span>,</span><br><span class="line">    colorized=<span class="literal">True</span>,</span><br><span class="line">    save_name=<span class="string">&#x27;zaizai.png&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>学到这里就结束啦，快去试试生成你自己的个性二维码吧！😁</p>
+<h2 id="save-name"><a href="#save-name" class="headerlink" title="save_name"></a><font face="Consolas">save_name</h2><p>设置生成图片的名字和格式，比如可以把 <font face="Consolas">JPG 格式的可以保存成 <font face="Consolas">PNG 格式的图片，保存的位置和 <font face="Consolas">py文件同一目录，下面挂一段代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br><span class="line">myqr.run(</span><br><span class="line">    words=<span class="string">&#x27;https://u.wechat.com/MHPhZxXSgAvAzy_oDqCUPkg&#x27;</span>,</span><br><span class="line">    picture=<span class="string">&#x27;1.jpg&#x27;</span>,</span><br><span class="line">    colorized=<span class="literal">True</span>,</span><br><span class="line">    save_name=<span class="string">&#x27;zaizai.png&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure><br>学到这里就结束啦，快去试试生成你自己的个性二维码吧！😁</p>
 
     </div>
 
@@ -412,6 +407,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -581,6 +579,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

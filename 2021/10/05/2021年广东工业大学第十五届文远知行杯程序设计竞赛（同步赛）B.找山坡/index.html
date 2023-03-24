@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算:max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;">
+  <meta name="description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算: max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;&#x3D; a[L] }. 也就是找到两个坐标,这两个坐标的值相等,并且他们">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算:max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;">
+<meta property="og:description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算: max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;&#x3D; a[L] }. 也就是找到两个坐标,这两个坐标的值相等,并且他们">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-05T08:23:20.493Z">
 <meta property="article:modified_time" content="2021-10-05T08:23:20.493Z">
@@ -263,12 +263,12 @@
 
       
         <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/13504/B">题目链接</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><font face="consolas">母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：<br>给定一个大小为 n 的数组 a，序号从 1 开始，<br>计算:<br><font face="consolas">max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;&#x3D; a[L] }.</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><font face="consolas">母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：<br>给定一个大小为 n 的数组 a，序号从 1 开始，<br>计算:</p>
+<p><font face="consolas">max{ R - L | 1 &lt;= L &lt;= R &lt;= n, a[L] == a[R], 对于所有i (L &lt;= i &lt;= R), 满足a[i] &gt;= a[L] }.</p>
 <p>也就是找到两个坐标,这两个坐标的值相等,并且他们之间的值都大于等于这两个坐标上的值.<br>这两个坐标相减最大能是多少.</p>
 <h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h2><p><font face="consolas">第一行一个整数 n，第二行 n 个整数</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h2><p>输出题目所求的值</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 2 1</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
 <p>单调栈~<br>单调栈里元素值递增，当当前元素小于栈顶元素时，一直弹出栈顶即可，直到出现以下三种情况：</p>
 <ul>
@@ -278,7 +278,6 @@
 </ul>
 <p>AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, ans, a[<span class="number">1000005</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    stack&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; a[i];</span><br><span class="line">        <span class="keyword">while</span> (!s.<span class="built_in">empty</span>() &amp;&amp; a[i] &lt; a[s.<span class="built_in">top</span>()]) s.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) s.<span class="built_in">push</span>(i);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[i] == a[s.<span class="built_in">top</span>()]) ans = <span class="built_in">max</span>(ans, i - s.<span class="built_in">top</span>());</span><br><span class="line">        <span class="keyword">else</span> s.<span class="built_in">push</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -400,6 +399,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -569,6 +571,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

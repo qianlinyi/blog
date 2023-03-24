@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 题目描述输入一个数 $n$，请构造一个长度为 $n$ 的排列，使得其中正好有 $k$ 对相邻的数 $gcd$（最大公约数）大于 $1$ 。排列是指 $1$ 到 $n$ 一共 $n$ 个数，每个数都出现过且仅出现过 $1$ 次。 输入描述:两个整数 $n$ 和 $k$，用空格隔开。$2\leq n\leq 100000,0\leq k \leq n&#x2F;2$ 输出描述:如果不存在可行">
+  <meta name="description" content="题目链接 题目描述输入一个数 $n$，请构造一个长度为 $n$ 的排列，使得其中正好有 $k$ 对相邻的数 $gcd$（最大公约数）大于 $1$ 。排列是指 $1$ 到 $n$ 一共 $n$ 个数，每个数都出现过且仅出现过 $1$ 次。 输入描述:两个整数 $n$ 和 $k$，用空格隔开。$2\leq n\leq 100000,0\leq k \leq n&#x2F;2$ 输出描述:如果不存在可行的构造方案">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021牛客寒假算法基础集训营1 I.限制不互素对的排列">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/22/2021%E7%89%9B%E5%AE%A2%E5%AF%92%E5%81%87%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%9B%86%E8%AE%AD%E8%90%A51%20I.%E9%99%90%E5%88%B6%E4%B8%8D%E4%BA%92%E7%B4%A0%E5%AF%B9%E7%9A%84%E6%8E%92%E5%88%97/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 题目描述输入一个数 $n$，请构造一个长度为 $n$ 的排列，使得其中正好有 $k$ 对相邻的数 $gcd$（最大公约数）大于 $1$ 。排列是指 $1$ 到 $n$ 一共 $n$ 个数，每个数都出现过且仅出现过 $1$ 次。 输入描述:两个整数 $n$ 和 $k$，用空格隔开。$2\leq n\leq 100000,0\leq k \leq n&#x2F;2$ 输出描述:如果不存在可行">
+<meta property="og:description" content="题目链接 题目描述输入一个数 $n$，请构造一个长度为 $n$ 的排列，使得其中正好有 $k$ 对相邻的数 $gcd$（最大公约数）大于 $1$ 。排列是指 $1$ 到 $n$ 一共 $n$ 个数，每个数都出现过且仅出现过 $1$ 次。 输入描述:两个整数 $n$ 和 $k$，用空格隔开。$2\leq n\leq 100000,0\leq k \leq n&#x2F;2$ 输出描述:如果不存在可行的构造方案">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-22T12:23:23.165Z">
 <meta property="article:modified_time" content="2021-03-22T12:23:23.165Z">
@@ -263,18 +263,14 @@
       
         <p><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/9981/I">题目链接</a></p>
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个数 $n$，请构造一个长度为 $n$ 的排列，使得其中正好有 $k$ 对相邻的数 $gcd$（最大公约数）大于 $1$ 。<br>排列是指 $1$ 到 $n$ 一共 $n$ 个数，每个数都出现过且仅出现过 $1$ 次。</p>
-<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>两个整数 $n$ 和 $k$，用空格隔开。<br>$2\leq n\leq 100000,0\leq k \leq n&#x2F;2$</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><p>两个整数 $n$ 和 $k$，用空格隔开。<br>$2\leq n\leq 100000,0\leq k \leq n/2$</p>
 <h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><p>如果不存在可行的构造方案，输出 $-1$。<br>否则输出一行 $n$ 个数，用空格隔开。如果有多组可行的构造方案，输出任意一组即可。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6 3</span><br></pre></td></tr></table></figure>
-
 <h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5 3 6 2 4 1</span><br></pre></td></tr></table></figure>
-<p>题目限制了 $k\leq n&#x2F;2$，这点非常关键，我就是没有意识到这一点卡了很久~<br>我们发现 $1-n$ 之间的偶数恰好是 $\frac{n}{2}$ 个，所以我们只需要排列这些偶数就能获得 $\frac{n}{2}-1$ 对，那么离最大目标还差一个，我们只需要抽一个 $6$ 出来和 $3$ 拼在一起就行，剩下的数按顺序输出即可，AC代码如下：</p>
+<p>题目限制了 $k\leq n/2$，这点非常关键，我就是没有意识到这一点卡了很久~<br>我们发现 $1-n$ 之间的偶数恰好是 $\frac{n}{2}$ 个，所以我们只需要排列这些偶数就能获得 $\frac{n}{2}-1$ 对，那么离最大目标还差一个，我们只需要抽一个 $6$ 出来和 $3$ 拼在一起就行，剩下的数按顺序输出即可，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, k;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">6</span> &amp;&amp; k == n / <span class="number">2</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;-1&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i += <span class="number">2</span>) <span class="keyword">if</span> (i != <span class="number">6</span>) v.<span class="built_in">push_back</span>(i);</span><br><span class="line">    v.<span class="built_in">push_back</span>(<span class="number">6</span>);</span><br><span class="line">    v.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= k; i++) cout &lt;&lt; v[i] &lt;&lt; <span class="string">&quot; &quot;</span>, s.<span class="built_in">insert</span>(v[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">if</span> (!s.<span class="built_in">count</span>(i)) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -395,6 +391,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -564,6 +563,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

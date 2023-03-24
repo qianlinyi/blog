@@ -20,15 +20,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目链接 当 A 的子数组 A[i], A[i+1], …, A[j] 满足下列条件时，我们称其为湍流子数组： 若 i &lt;&#x3D; k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；或 若 i &lt;&#x3D; k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[">
+  <meta name="description" content="题目链接 当 A 的子数组 A[i], A[i+1], …, A[j] 满足下列条件时，我们称其为湍流子数组： 若 i &lt;&#x3D; k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；或 若 i &lt;&#x3D; k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[k] &lt; A[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 978 最长湍流子数组">
 <meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/21/LeetCode%20978%20%E6%9C%80%E9%95%BF%E6%B9%8D%E6%B5%81%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="旺崽的博客">
-<meta property="og:description" content="题目链接 当 A 的子数组 A[i], A[i+1], …, A[j] 满足下列条件时，我们称其为湍流子数组： 若 i &lt;&#x3D; k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；或 若 i &lt;&#x3D; k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[">
+<meta property="og:description" content="题目链接 当 A 的子数组 A[i], A[i+1], …, A[j] 满足下列条件时，我们称其为湍流子数组： 若 i &lt;&#x3D; k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；或 若 i &lt;&#x3D; k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[k] &lt; A[">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-21T11:57:55.152Z">
 <meta property="article:modified_time" content="2021-03-21T11:57:55.152Z">
@@ -263,27 +263,24 @@
       
         <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-turbulent-subarray/">题目链接</a></p>
 <p><font face="Consolas">当 A 的子数组 A[i], A[i+1], …, A[j] 满足下列条件时，我们称其为湍流子数组：</p>
-<p><font face="Consolas">若 i &lt;&#x3D; k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；<br>或 若 i &lt;&#x3D; k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[k] &lt; A[k+1]。<br>也就是说，如果比较符号在子数组中的每个相邻元素对之间翻转，则该子数组是湍流子数组。</p>
+<p><font face="Consolas">若 i &lt;= k &lt; j，当 k 为奇数时， A[k] &gt; A[k+1]，且当 k 为偶数时，A[k] &lt; A[k+1]；<br>或 若 i &lt;= k &lt; j，当 k 为偶数时，A[k] &gt; A[k+1] ，且当 k 为奇数时， A[k] &lt; A[k+1]。<br>也就是说，如果比较符号在子数组中的每个相邻元素对之间翻转，则该子数组是湍流子数组。</p>
 <p>返回 A 的最大湍流子数组的长度。</p>
 <h2 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a>示例 1：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：[9,4,2,10,7,8,8,1,9]</span><br><span class="line">输出：5</span><br><span class="line">解释：(A[1] &gt; A[2] &lt; A[3] &gt; A[4] &lt; A[5])</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[4,8,12,16]</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-
 <h2 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：[100]</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
 <p>思维~<br>官方题解有滑窗，有 <font face="Consolas">DP，但是我另辟蹊径，用一种纯思维的方式，首先求两两数的差值，存入 <font face="Consolas">diff 数组：</p>
 <ul>
 <li><font face="Consolas">arr[i]&gt;arr[i+1]，存入 $1$</li>
 <li><font face="Consolas">arr[i]&lt;arr[i+1]，存入 $-1$</li>
-<li><font face="Consolas">arr[i]&#x3D;arr[i+1]，存入 $0$</li>
+<li><font face="Consolas">arr[i]=arr[i+1]，存入 $0$</li>
 </ul>
 <p>求得这个差值数组之后，我们就所有找的最大长度，无非就是求 $1,-1,\cdots,-1，1$ 序列的最大长度，设一个 $mx$ 变量维护最大值即可，对某一位置 $i$ 判断下面两种情况：</p>
 <ul>
-<li><font face="Consolas">diff[i]&#x3D;0，此时必须把 mx 置 0，因为差值为 0 时最大长度为 1</li>
-<li><font face="Consolas">diff[i]≠0，若 diff[i]+diff[i+1]&#x3D;0，mx++；若 diff[i]+diff[i+1]≠0，把 mx 置 1，因为差值不为 0 时的最大长度为 2</li>
+<li><font face="Consolas">diff[i]=0，此时必须把 mx 置 0，因为差值为 0 时最大长度为 1</li>
+<li><font face="Consolas">diff[i]≠0，若 diff[i]+diff[i+1]=0，mx++；若 diff[i]+diff[i+1]≠0，把 mx 置 1，因为差值不为 0 时的最大长度为 2</li>
 </ul>
-<p>每次循环 <font face="Consolas">ans&#x3D;max(ans,mx+1)，因为 mx 个差值对应 mx+1 个数，AC代码如下：</p>
+<p>每次循环 <font face="Consolas">ans=max(ans,mx+1)，因为 mx 个差值对应 mx+1 个数，AC代码如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxTurbulenceSize</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (arr.<span class="built_in">size</span>() == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; diff;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; arr.<span class="built_in">size</span>() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; arr[i + <span class="number">1</span>]) diff.<span class="built_in">emplace_back</span>(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (arr[i] &lt; arr[i + <span class="number">1</span>]) diff.<span class="built_in">emplace_back</span>(<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">else</span> diff.<span class="built_in">emplace_back</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> ans = (diff.<span class="built_in">front</span>() ? <span class="number">2</span> : <span class="number">1</span>), mx = (diff.<span class="built_in">front</span>() ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; diff.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!diff[i]) mx = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (diff[i] + diff[i - <span class="number">1</span>] == <span class="number">0</span>) mx++;</span><br><span class="line">                <span class="keyword">else</span> mx = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, mx + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -404,6 +401,9 @@
       友情链接
     </div>
     <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qianlinyi.cn/" title="https:&#x2F;&#x2F;qianlinyi.cn">崽崽的个人网站</a>
+        </li>
         <li class="links-of-blogroll-item">
           <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
         </li>
@@ -573,6 +573,61 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
