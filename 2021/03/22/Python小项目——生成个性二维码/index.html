@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="baidu-site-verification" content="code-nYZWMvncCw" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="true">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：MyQR官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 pip 命令安装。下载完后导包： 1from MyQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python小项目——生成个性二维码">
+<meta property="og:url" content="http://qianlinyi.cn/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/index.html">
+<meta property="og:site_name" content="旺崽的博客">
+<meta property="og:description" content="现代社交离不开微信，QQ，那么今天就教你用 Python 生成自己的个性二维码😎这里用到了 MyQR 库，下面是 github 的地址：MyQR官方介绍：制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 pip 命令安装。下载完后导包： 1from MyQ">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209120917966.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209121913666.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209121659329.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209135907655.jpg#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209135937543.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209140751419.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209141326715.gif#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210209141504720.gif#pic_center">
+<meta property="article:published_time" content="2021-03-22T12:26:16.789Z">
+<meta property="article:modified_time" content="2021-03-22T12:26:16.789Z">
+<meta property="article:author" content="崽崽">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210209120917966.png#pic_center">
+
+<link rel="canonical" href="http://qianlinyi.cn/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Python小项目——生成个性二维码 | 旺崽的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">旺崽的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">要么天赋异禀，要么天道酬勤</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="崽崽">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="旺崽的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python小项目——生成个性二维码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-22 20:26:16" itemprop="dateCreated datePublished" datetime="2021-03-22T20:26:16+08:00">2021-03-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">Python小项目</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>现代社交离不开微信，<font face="Consolas">QQ，那么今天就教你用 <font face="Consolas">Python 生成自己的个性二维码😎<br>这里用到了 MyQR 库，下面是 github 的地址：<br><a target="_blank" rel="noopener" href="https://github.com/qiulongquan/MyQR"><font face="Consolas">MyQR</font></a><br>官方介绍：<br>制作普通二维码、带有图片的艺术二维码和动态二维码。这个库可以直接在 <font face="Consolas">Pycharm 的 Settings 的 Project interpreter 里点 + 号下载，也可以在 cmd 里用 <font face="Consolas">pip 命令安装。<br>下载完后导包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br></pre></td></tr></table></figure>
+
+<p>下面就让我们来看看里面最主要的 <font face="Consolas">run 函数，源码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">words, version=<span class="number">1</span>, level=<span class="string">&#x27;H&#x27;</span>, picture=<span class="literal">None</span>, colorized=<span class="literal">False</span>, contrast=<span class="number">1.0</span>, brightness=<span class="number">1.0</span>, save_name=<span class="literal">None</span>, save_dir=os.getcwd(<span class="params"></span>)</span>):</span><br></pre></td></tr></table></figure>
+<h2 id="words"><a href="#words" class="headerlink" title="words"></a><font face="Consolas">words</h2><p><font face="Consolas">words</font> 里面放的就是二维码的内容，举个例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;i love you&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>生成如下二维码：<br><img src="https://img-blog.csdnimg.cn/20210209120917966.png#pic_center" alt="在这里插入图片描述">扫码就会出现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i love you</span><br></pre></td></tr></table></figure>
+<p>当然 <font face="Consolas">words</font> 里面也可以放地址，比如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://www.baidu.com&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>生成如下图片：<br><img src="https://img-blog.csdnimg.cn/20210209121913666.png#pic_center" alt="在这里插入图片描述"><br>扫码就能直接进入百度界面~<br>那么如何添加我们个人的二维码呢？我们只需要将我们的QQ或者微信二维码解析一下 <a target="_blank" rel="noopener" href="https://cli.im/deqr">草料二维码(将二维码图片上传解码)</a> 得到地址，下面是我解析我的QQ二维码获得的地址，并用该地址生成了二维码(有人可能会问，我用二维码图片再生成二维码图片，我是不是脑子有问题😒，别急，下面教你把二维码跟图片结合)：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210209121659329.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="picture"><a href="#picture" class="headerlink" title="picture"></a><font face="Consolas">picture</font></h2><p>这是比较强大的一个地方，可以将二维码和图片结合，注意如果图片不是和 py 文件在同一目录下会报错，这次我用下图和上述的QQ二维码解码地址结合：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         picture=<span class="string">&#x27;1.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209135907655.jpg#pic_center" alt="在这里插入图片描述"><br>效果如下：<br><img src="https://img-blog.csdnimg.cn/20210209135937543.png#pic_center" alt="在这里插入图片描述"><br>不难发现这是黑白的，明显更丑了，所以我们用到了下面第三个参数😀</p>
+<h2 id="colorized"><a href="#colorized" class="headerlink" title="colorized"></a><font face="Consolas">colorized</font></h2><p><font face="Consolas">bool</font> 类型，设置为 <font face="Consolas">True</font> 时即可看到彩色的二维码图片了，还是用上面的图片举例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myqr.<span class="built_in">run</span>(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         colorized=True,</span><br><span class="line">         picture=<span class="string">&#x27;1.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20210209140751419.png#pic_center" alt="在这里插入图片描述"><br>这效果不就来了，你们找喜欢的图片与二维码结合即可~<br>下面介绍一下这个函数非常强大的一个功能：动态二维码</p>
+<h2 id="动态二维码"><a href="#动态二维码" class="headerlink" title="动态二维码"></a>动态二维码</h2><p><font face="Consolas">picture</font> 不仅能放静图，还能放 <font face="Consolas">GIF</font> 动图，比如我用下面这张图片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myqr.run(words=<span class="string">&#x27;https://qm.qq.com/cgi-bin/qm/qr?k=l-4r-RKlP8E1nGoHSWUzNvUPR6w6p5eK&amp;noverify=0&#x27;</span>,</span><br><span class="line">         colorized=<span class="literal">True</span>,</span><br><span class="line">         picture=<span class="string">&#x27;1.gif&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210209141326715.gif#pic_center" alt="在这里插入图片描述"><br>效果如下：<br><img src="https://img-blog.csdnimg.cn/20210209141504720.gif#pic_center" alt="在这里插入图片描述"><br>学到这里你就掌握了生成个性二维码的诀窍了，是不是很简单，不仅微信和QQ可以，你们同样可以给自己的网站(博客，微博，gihub)等生成个性二维码，下面再补充一个小点</p>
+<h2 id="save-name"><a href="#save-name" class="headerlink" title="save_name"></a><font face="Consolas">save_name</h2><p>设置生成图片的名字和格式，比如可以把 <font face="Consolas">JPG 格式的可以保存成 <font face="Consolas">PNG 格式的图片，保存的位置和 <font face="Consolas">py文件同一目录，下面挂一段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br><span class="line">myqr.run(</span><br><span class="line">    words=<span class="string">&#x27;https://u.wechat.com/MHPhZxXSgAvAzy_oDqCUPkg&#x27;</span>,</span><br><span class="line">    picture=<span class="string">&#x27;1.jpg&#x27;</span>,</span><br><span class="line">    colorized=<span class="literal">True</span>,</span><br><span class="line">    save_name=<span class="string">&#x27;zaizai.png&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>学到这里就结束啦，快去试试生成你自己的个性二维码吧！😁</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>崽崽
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://qianlinyi.cn/blog/2021/03/22/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE%E2%80%94%E2%80%94%E7%94%9F%E6%88%90%E4%B8%AA%E6%80%A7%E4%BA%8C%E7%BB%B4%E7%A0%81/" title="Python小项目——生成个性二维码">http://qianlinyi.cn/blog/2021/03/22/Python小项目——生成个性二维码/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/" rel="prev" title="LeetCode 1489 找到最小生成树里的关键边和伪关键边">
+      <i class="fa fa-chevron-left"></i> LeetCode 1489 找到最小生成树里的关键边和伪关键边
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2021/03/22/LeetCode%20959%20%E7%94%B1%E6%96%9C%E6%9D%A0%E5%88%92%E5%88%86%E5%8C%BA%E5%9F%9F/" rel="next" title="LeetCode 959 由斜杠划分区域">
+      LeetCode 959 由斜杠划分区域 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#words"><span class="nav-number">1.</span> <span class="nav-text">words</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#picture"><span class="nav-number">2.</span> <span class="nav-text">picture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#colorized"><span class="nav-number">3.</span> <span class="nav-text">colorized</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">动态二维码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save-name"><span class="nav-number">5.</span> <span class="nav-text">save_name</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="崽崽"
+      src="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">崽崽</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dyhgo.xyz/" title="https:&#x2F;&#x2F;dyhgo.xyz" rel="noopener" target="_blank">dyh的博客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+
+<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AtCoder/" rel="tag">AtCoder</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BFS/" rel="tag">BFS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Codeforces/" rel="tag">Codeforces</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">36</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bitset/" rel="tag">bitset</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/deque/" rel="tag">deque</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/multiset/" rel="tag">multiset</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%89%8D%E5%90%8E%E7%BC%80%E5%92%8C/" rel="tag">前后缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%A0%86/" rel="tag">堆</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B7%AE%E5%88%86/" rel="tag">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" rel="tag">拓展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9A%B4%E5%8A%9B/" rel="tag">暴力</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" rel="tag">最长上升子序列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%89%9B%E5%AE%A2/" rel="tag">牛客</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">矩阵快速幂</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%B4%A0%E7%AD%9B/" rel="tag">素筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%83%8C%E5%8C%85DP/" rel="tag">背包DP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">崽崽</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+  
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'nwzunatdsCJNk24KRvTmR5uL-gzGzoHsz',
+      appKey     : 'odQdMjcrbg6OUUXTDcctUnDW',
+      placeholder: "快来吐槽吧(●'◡'●)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+
+</script>
+
+<script type="text/javascript">
+   fetch('https://v1.hitokoto.cn/?c=f&encode=text')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+"__"+data.from);
+    })
+    .catch(console.error)
+</script>
+
+
+</body>
+</html>

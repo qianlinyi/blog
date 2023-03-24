@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="baidu-site-verification" content="code-nYZWMvncCw" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="true">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qianlinyi.cn","root":"/blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="毕设用 Flask 框架开发了一个 Web 网站 ，在开发过程中遇到了很多问题，今天这里做一个总结，避免以后遇到同样的问题。 问题 112# 问题代码Error: While importing &amp;#x27;xxx&amp;#x27;, an ImportError was raised. import 语句有误，检查所有 py 文件里的 import 语句，可能的错误一种是包名有误，另一种是引用其他 p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flask 开发问题总结">
+<meta property="og:url" content="http://qianlinyi.cn/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="旺崽的博客">
+<meta property="og:description" content="毕设用 Flask 框架开发了一个 Web 网站 ，在开发过程中遇到了很多问题，今天这里做一个总结，避免以后遇到同样的问题。 问题 112# 问题代码Error: While importing &amp;#x27;xxx&amp;#x27;, an ImportError was raised. import 语句有误，检查所有 py 文件里的 import 语句，可能的错误一种是包名有误，另一种是引用其他 p">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-27T07:39:22.155Z">
+<meta property="article:modified_time" content="2022-08-27T07:41:47.491Z">
+<meta property="article:author" content="崽崽">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://qianlinyi.cn/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Flask 开发问题总结 | 旺崽的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">旺崽的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">要么天赋异禀，要么天道酬勤</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="崽崽">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="旺崽的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flask 开发问题总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-27 15:39:22 / 修改时间：15:41:47" itemprop="dateCreated datePublished" datetime="2022-08-27T15:39:22+08:00">2022-08-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Python%E5%B0%8F%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">Python小项目</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><font face="comic sans ms">毕设用 Flask 框架开发了一个 Web 网站 ，在开发过程中遇到了很多问题，今天这里做一个总结，避免以后遇到同样的问题。</p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题 1"></a>问题 1</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">Error: <span class="keyword">While</span> importing <span class="string">&#x27;xxx&#x27;</span>, an ImportError was raised.</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">import 语句有误，检查所有 py 文件里的 import 语句，可能的错误一种是包名有误，另一种是引用其他 py 文件里的函数时需要给出完整路径 “项目名.文件夹名.文件名.函数名” 的形式<br>注意直接使用 flask run 指令运行项目时报错很模糊，可以直接在编译器上运行 app.py 文件，这样可以获得比较清晰的错误提示</p>
+<h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题 2"></a>问题 2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">云服务器上用 flask run 命令运行项目后，本地输入云服务器 ip 无法访问</span><br></pre></td></tr></table></figure>
+<p>在运行指令后加上主机地址以监听所有外部请求，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flask run --host=<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="问题-3"><a href="#问题-3" class="headerlink" title="问题 3"></a>问题 3</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">TypeError: Rule.__init__() got an unexpected keyword argument <span class="string">&#x27;method&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">视图函数的装饰器里的 method 漏了 s，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">user_bp.route(<span class="string">&#x27;/settings/data&#x27;</span>, method=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="问题-4"><a href="#问题-4" class="headerlink" title="问题 4"></a>问题 4</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码</span></span><br><span class="line">AssertionError: View <span class="function"><span class="keyword">function</span> <span class="title">mapping</span> <span class="title">is</span> <span class="title">overwriting</span> <span class="title">an</span> <span class="title">existing</span> <span class="title">endpoint</span> <span class="keyword">function</span>: <span class="title">blog</span>.<span class="title">change_theme</span></span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">函数名重复，文件中有两个 change_theme 函数</p>
+<h3 id="问题-5"><a href="#问题-5" class="headerlink" title="问题 5"></a>问题 5</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: The view <span class="function"><span class="keyword">function</span> <span class="title">for</span> &#x27;<span class="title">xxx</span>&#x27; <span class="title">did</span> <span class="title">not</span> <span class="title">return</span> <span class="title">a</span> <span class="title">valid</span> <span class="title">response</span>. <span class="title">The</span> <span class="keyword">function</span> <span class="title">either</span> <span class="title">returned</span> <span class="title">None</span> <span class="title">or</span> <span class="title">ended</span> <span class="title">without</span> <span class="title">a</span> <span class="title">return</span> <span class="title">statement</span>.</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">视图函数中的 return 位置有误，通常是多余的 tab 键导致函数缺少返回语句</p>
+<h3 id="问题-6"><a href="#问题-6" class="headerlink" title="问题 6"></a>问题 6</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">TypeError: <span class="string">&#x27;bool&#x27;</span> object is not callable</span><br><span class="line"><span class="comment"># 错误处</span></span><br><span class="line"><span class="keyword">if</span> current_user.is_admin()</span><br></pre></td></tr></table></figure>
+<p>注意属性和方法的区别，属性不需要加括号，方法需要加括号</p>
+<h3 id="问题-7"><a href="#问题-7" class="headerlink" title="问题 7"></a>问题 7</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">Method Not Allowed.The method is not allowed <span class="keyword">for</span> the requested URL.</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">视图函数里只有 post 方法而没有 request 方法，所以直接访问会报错</p>
+<h3 id="问题-8"><a href="#问题-8" class="headerlink" title="问题 8"></a>问题 8</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">RuntimeError</span><br><span class="line">RuntimeError: Working outside of request context.</span><br><span class="line"></span><br><span class="line">This typically means that you attempted to use functionality that needed</span><br><span class="line">an active HTTP request. Consult the documentation on testing <span class="keyword">for</span></span><br><span class="line">information about how to avoid this problem.</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">flask 中的 request 对象只能在视图函数下使用，在其他地方使用会报错</p>
+<h3 id="问题-9"><a href="#问题-9" class="headerlink" title="问题 9"></a>问题 9</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (<span class="number">2003</span>, <span class="string">&quot;Can&#x27;t connect to MySQL server on &#x27;@rm-bp1o019zha4dfz18h2o.mysql.rds.aliyuncs.com&#x27; ([Errno 11003] getaddrinfo failed)&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">因为 password 中有特殊字符导致无法正常连接数据库，一般是密码中含有 @ 字符，修改密码即可解决</p>
+<h3 id="问题-10"><a href="#问题-10" class="headerlink" title="问题 10"></a>问题 10</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">sqlalchemy.exc.InvalidRequestError: Mapper <span class="string">&#x27;mapped class User-&gt;user&#x27;</span> has no property <span class="string">&#x27;role&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">User 模型中未添加 role 属性</p>
+<h3 id="问题-11"><a href="#问题-11" class="headerlink" title="问题 11"></a>问题 11</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlalchemy.exc.InvalidRequestError: Could not locate a property which relates instances of <span class="class"><span class="keyword">class</span> &#x27;<span class="title">Collect</span>&#x27; <span class="title">to</span> <span class="title">instances</span> <span class="title">of</span> <span class="title">class</span> &#x27;<span class="title">User</span>&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">Collect 模型和 User 模型之间未建立联系</p>
+<h3 id="问题-12"><a href="#问题-12" class="headerlink" title="问题 12"></a>问题 12</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">SAWarning: Attribute <span class="string">&#x27;BSCV</span></span><br><span class="line"><span class="string">A&#x27;</span> on <span class="class"><span class="keyword">class</span> &lt;<span class="title">class</span> &#x27;<span class="title">mw</span>.<span class="title">models</span>.<span class="title">Cornea</span>&#x27;&gt; <span class="title">appears</span> <span class="title">to</span> <span class="title">be</span> <span class="title">a</span> <span class="title">non</span>-<span class="title">schema</span> &#x27;<span class="title">sqlalchemy</span>.<span class="title">sql</span>.<span class="title">column</span>()&#x27; <span class="title">object</span>; <span class="title">this</span> <span class="title">won</span>&#x27;<span class="title">t</span> <span class="title">be</span> <span class="title">part</span> <span class="title">of</span> <span class="title">the</span> <span class="title">declarative</span> <span class="title">mapping</span></span></span><br><span class="line"><span class="class"># 错误处</span></span><br><span class="line"><span class="class"><span class="title">BSCVA</span> = <span class="title">db</span>.<span class="title">column</span>(<span class="title">db</span>.<span class="title">DECIMAL</span>(2, 1))</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">column 首字母未大写，导致数据库表声明错误</p>
+<h3 id="问题-13"><a href="#问题-13" class="headerlink" title="问题 13"></a>问题 13</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 错误代码</span></span><br><span class="line">AttributeError: <span class="string">&#x27;User&#x27;</span> object has no attribute <span class="string">&#x27;translate&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>数据提交到数据库时类型有误，如代码所示，此时需要检查提交到 User 表中的所有数据类型是否和声明一致</p>
+<h3 id="问题-14"><a href="#问题-14" class="headerlink" title="问题 14"></a>问题 14</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sqlalchemy.exc.NoForeignKeysError: Could not determine join condition between parent/child tables on relationship User.comments - there</span><br><span class="line"> are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, o</span><br><span class="line"><span class="built_in">r</span> specify a <span class="string">&#x27;primaryjoin&#x27;</span> expression. </span><br></pre></td></tr></table></figure>
+<p>关系建立有误，可以将目标表的关系逐一对照查错</p>
+<h3 id="问题-15"><a href="#问题-15" class="headerlink" title="问题 15"></a>问题 15</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smtplib.SMTPServerDisconnected: please run connect() first</span><br></pre></td></tr></table></figure>
+<p>使用 smtp 服务发送邮件时报错，服务涉及的账号密码等都存在 .env 文件中，Flask 会自动读取 .env 文件里的参数，但是该文件必须放在项目根目录下，否则会因无法读取报错</p>
+<h3 id="问题-16"><a href="#问题-16" class="headerlink" title="问题 16"></a>问题 16</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.port = int(port)</span><br><span class="line">ValueError: invalid literal <span class="keyword">for</span> int() with base <span class="number">10</span>: <span class="string">&#x27;None&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">SQLAlchemy 把一个引擎的源表示为一个连同设定引擎选项的可选字符串参数的 URI，URI 的形式是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> self.registry[key]</span><br><span class="line">KeyError: <span class="number">140581010807680</span></span><br><span class="line">dialect+driver://username:password@host:port/database</span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">出现上述错误的原因是程序未读出 URI 中的 port，此时要检查环境变量配置文件，如果配置准确无误但还是无法读出配置文件中的 port 值注意以下问题：</p>
+<p><font face="comic sans ms">在开发时，因为安装了 python-dotenv，使用 flask run 命令启动开发服务器时 Flask 会自动导入存储在 .flaskenv 或 .env 文件中的环境变量。在生产环境下，我们需要使用性能更高的生产服务器，所以不能再使用这个命令启动程序，这时我们需要手动导入环境变量。</p>
+<p><font face="comic sans ms">我们应该尽可能地提前导入环境变量操作，这样才能确保程序中获取环境变量的代码正常工作，因此最佳的导入位置就是在 wsgi.py 脚本中，其次是程序包构造文件的顶部。在wsgi.py脚本中，我们使用 python-dotenv 提供的 load_dotenv() 函数手动导入 .env 文件中设置的环境变量，如下所示：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from dotenv import load_dotenv</span><br><span class="line"></span><br><span class="line">dotenv_path = os.path.join(os.path.dirname(__file__), <span class="string">&#x27;.env&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> os.path.exists(dotenv_path):</span><br><span class="line">	load_dotenv(dotenv_path)</span><br><span class="line"></span><br><span class="line">from bluelog import create_app</span><br><span class="line">app = create_app(<span class="string">&#x27;production&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>上面这段代码中的顺序非常重要，手动导入环境变量的语句必须在最前面，否则会导致一些环境变量无法读出造成程序崩溃。</p>
+<h3 id="问题-17"><a href="#问题-17" class="headerlink" title="问题 17"></a>问题 17</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AttributeError: <span class="string">&#x27;int&#x27;</span> object has no attribute <span class="string">&#x27;_sa_instance_state&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><font face="comic sans ms">Flask 数据库外键字段在创建对象赋值时，需要赋值对象，而不是该对象的 id 或者其他单独的字段。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>崽崽
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://qianlinyi.cn/blog/2022/08/27/Flask%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="Flask 开发问题总结">http://qianlinyi.cn/blog/2022/08/27/Flask开发问题总结/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/11/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" rel="prev" title="我的第一篇博客文章">
+      <i class="fa fa-chevron-left"></i> 我的第一篇博客文章
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-1"><span class="nav-number">1.</span> <span class="nav-text">问题 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-2"><span class="nav-number">2.</span> <span class="nav-text">问题 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-3"><span class="nav-number">3.</span> <span class="nav-text">问题 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-4"><span class="nav-number">4.</span> <span class="nav-text">问题 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-5"><span class="nav-number">5.</span> <span class="nav-text">问题 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-6"><span class="nav-number">6.</span> <span class="nav-text">问题 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-7"><span class="nav-number">7.</span> <span class="nav-text">问题 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-8"><span class="nav-number">8.</span> <span class="nav-text">问题 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-9"><span class="nav-number">9.</span> <span class="nav-text">问题 9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-10"><span class="nav-number">10.</span> <span class="nav-text">问题 10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-11"><span class="nav-number">11.</span> <span class="nav-text">问题 11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-12"><span class="nav-number">12.</span> <span class="nav-text">问题 12</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-13"><span class="nav-number">13.</span> <span class="nav-text">问题 13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-14"><span class="nav-number">14.</span> <span class="nav-text">问题 14</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-15"><span class="nav-number">15.</span> <span class="nav-text">问题 15</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-16"><span class="nav-number">16.</span> <span class="nav-text">问题 16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98-17"><span class="nav-number">17.</span> <span class="nav-text">问题 17</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="崽崽"
+      src="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">崽崽</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zaizai.blog.csdn.net/" title="https:&#x2F;&#x2F;zaizai.blog.csdn.net" rel="noopener" target="_blank">崽崽的CSDN博客</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://dyhgo.xyz/" title="https:&#x2F;&#x2F;dyhgo.xyz" rel="noopener" target="_blank">dyh的博客</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+
+<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/AtCoder/" rel="tag">AtCoder</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/BFS/" rel="tag">BFS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Codeforces/" rel="tag">Codeforces</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">36</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/bitset/" rel="tag">bitset</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/deque/" rel="tag">deque</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/multiset/" rel="tag">multiset</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag">优先队列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%89%8D%E5%90%8E%E7%BC%80%E5%92%8C/" rel="tag">前后缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%A0%86/" rel="tag">堆</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B7%AE%E5%88%86/" rel="tag">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%80%9D%E7%BB%B4/" rel="tag">思维</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%8B%93%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97/" rel="tag">拓展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%95%B0%E8%AE%BA/" rel="tag">数论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9A%B4%E5%8A%9B/" rel="tag">暴力</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97/" rel="tag">最长上升子序列</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%9E%84%E9%80%A0/" rel="tag">构造</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%89%9B%E5%AE%A2/" rel="tag">牛客</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">矩阵快速幂</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%B4%A0%E7%AD%9B/" rel="tag">素筛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%83%8C%E5%8C%85DP/" rel="tag">背包DP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" rel="tag">计算几何</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a><span class="tag-list-count">2</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">崽崽</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+  
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/blog/lib/anime.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.min.js"></script>
+  <script src="/blog/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+<script src="/blog/js/motion.js"></script>
+
+
+<script src="/blog/js/schemes/pisces.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/blog/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'nwzunatdsCJNk24KRvTmR5uL-gzGzoHsz',
+      appKey     : 'odQdMjcrbg6OUUXTDcctUnDW',
+      placeholder: "快来吐槽吧(●'◡'●)",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+
+</script>
+
+<script type="text/javascript">
+   fetch('https://v1.hitokoto.cn/?c=f&encode=text')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("veditor").setAttribute("placeholder",data.hitokoto+"__"+data.from);
+    })
+    .catch(console.error)
+</script>
+
+
+</body>
+</html>
