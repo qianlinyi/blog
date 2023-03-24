@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta name="referrer" content="no-referrer"/>
   <meta charset="UTF-8">
 <meta name="baidu-site-verification" content="code-nYZWMvncCw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,7 +26,7 @@
   <meta name="description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算:max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡">
-<meta property="og:url" content="http://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/index.html">
+<meta property="og:url" content="https://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/index.html">
 <meta property="og:site_name" content="旺崽的博客">
 <meta property="og:description" content="题目链接 题目描述母牛哥在电脑面前坐久了，想站起来看看窗外的小山坡，于是就想出了这个问题：给定一个大小为 n 的数组 a，序号从 1 开始，计算:max{ R - L | 1 &lt;&#x3D; L &lt;&#x3D; R &lt;&#x3D; n, a[L] &#x3D;&#x3D; a[R], 对于所有i (L &lt;&#x3D; i &lt;&#x3D; R), 满足a[i] &gt;">
 <meta property="og:locale" content="zh_CN">
@@ -37,7 +38,7 @@
 <meta property="article:tag" content="单调栈">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/">
+<link rel="canonical" href="https://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/">
 
 
 <script id="page-configurations">
@@ -194,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/">
+    <link itemprop="mainEntityOfPage" href="https://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
@@ -293,7 +294,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/" title="2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡">http://qianlinyi.cn/blog/2021/10/05/2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡/</a>
+    <a href="https://qianlinyi.cn/blog/2021/10/05/2021%E5%B9%B4%E5%B9%BF%E4%B8%9C%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%E7%AC%AC%E5%8D%81%E4%BA%94%E5%B1%8A%E6%96%87%E8%BF%9C%E7%9F%A5%E8%A1%8C%E6%9D%AF%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B%EF%BC%88%E5%90%8C%E6%AD%A5%E8%B5%9B%EF%BC%89B.%E6%89%BE%E5%B1%B1%E5%9D%A1/" title="2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡">https://qianlinyi.cn/blog/2021/10/05/2021年广东工业大学第十五届文远知行杯程序设计竞赛（同步赛）B.找山坡/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -411,8 +412,8 @@
       </div>
 
 
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcanvas.js"></script>
 <div class="widget-wrap">
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
@@ -482,10 +483,10 @@
     </footer>
   </div>
   <!--崩溃欺骗-->
-  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <script type="text/javascript" src="/blog/js/crash_cheat.js"></script>
   <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-  
+  <script type="text/javascript" src="/blog/js/clicklove.js"></script>
+
   
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>

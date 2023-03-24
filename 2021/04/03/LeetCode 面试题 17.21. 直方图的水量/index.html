@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta name="referrer" content="no-referrer"/>
   <meta charset="UTF-8">
 <meta name="baidu-site-verification" content="code-nYZWMvncCw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,7 +26,7 @@
   <meta name="description" content="题目链接 给定一个直方图(也称柱状图)，假设有人从上面源源不断地倒水，最后直方图能存多少水量?直方图的宽度为 1。上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的直方图，在这种情况下，可以接 6 个单位的水（蓝色部分表示水）。 感谢 Marcos 贡献此图。 示例:12输入: [0,1,0,2,1,0,1,3,2,1,2,1]输出: 6  单调栈~首先我们不妨思考一下，什么">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 面试题 17.21. 直方图的水量">
-<meta property="og:url" content="http://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/index.html">
+<meta property="og:url" content="https://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/index.html">
 <meta property="og:site_name" content="旺崽的博客">
 <meta property="og:description" content="题目链接 给定一个直方图(也称柱状图)，假设有人从上面源源不断地倒水，最后直方图能存多少水量?直方图的宽度为 1。上面是由数组 [0,1,0,2,1,0,1,3,2,1,2,1] 表示的直方图，在这种情况下，可以接 6 个单位的水（蓝色部分表示水）。 感谢 Marcos 贡献此图。 示例:12输入: [0,1,0,2,1,0,1,3,2,1,2,1]输出: 6  单调栈~首先我们不妨思考一下，什么">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +39,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210403165507288.png">
 
-<link rel="canonical" href="http://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/">
+<link rel="canonical" href="https://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/">
 
 
 <script id="page-configurations">
@@ -195,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/">
+    <link itemprop="mainEntityOfPage" href="https://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
@@ -284,7 +285,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/" title="LeetCode 面试题 17.21. 直方图的水量">http://qianlinyi.cn/blog/2021/04/03/LeetCode 面试题 17.21. 直方图的水量/</a>
+    <a href="https://qianlinyi.cn/blog/2021/04/03/LeetCode%20%E9%9D%A2%E8%AF%95%E9%A2%98%2017.21.%20%E7%9B%B4%E6%96%B9%E5%9B%BE%E7%9A%84%E6%B0%B4%E9%87%8F/" title="LeetCode 面试题 17.21. 直方图的水量">https://qianlinyi.cn/blog/2021/04/03/LeetCode 面试题 17.21. 直方图的水量/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -401,8 +402,8 @@
       </div>
 
 
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcanvas.js"></script>
 <div class="widget-wrap">
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
@@ -472,10 +473,10 @@
     </footer>
   </div>
   <!--崩溃欺骗-->
-  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <script type="text/javascript" src="/blog/js/crash_cheat.js"></script>
   <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-  
+  <script type="text/javascript" src="/blog/js/clicklove.js"></script>
+
   
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>

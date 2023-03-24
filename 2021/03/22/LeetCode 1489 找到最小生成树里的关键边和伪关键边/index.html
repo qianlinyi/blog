@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta name="referrer" content="no-referrer"/>
   <meta charset="UTF-8">
 <meta name="baidu-site-verification" content="code-nYZWMvncCw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,7 +26,7 @@
   <meta name="description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1489 找到最小生成树里的关键边和伪关键边">
-<meta property="og:url" content="http://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/index.html">
+<meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/index.html">
 <meta property="og:site_name" content="旺崽的博客">
 <meta property="og:description" content="题目描述 给你一个 $n$ 个点的带权无向连通图，节点编号为 $0$ 到 $n-1$ ，同时还有一个数组 $edges$ ，其中 $edges[i] &#x3D; [from_i, to_i, weight_i]$ 表示在 $from_i$ 和 $to_i$ 节点之间有一条带权无向边。最小生成树 (MST) 是给定图中边的一个子集，它连接了所有节点且没有环，而且这些边的权值和最小。 请你找到给定图">
 <meta property="og:locale" content="zh_CN">
@@ -41,7 +42,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210209110503489.png">
 
-<link rel="canonical" href="http://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/">
+<link rel="canonical" href="https://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/">
 
 
 <script id="page-configurations">
@@ -198,7 +199,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/">
+    <link itemprop="mainEntityOfPage" href="https://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
@@ -294,7 +295,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/" title="LeetCode 1489 找到最小生成树里的关键边和伪关键边">http://qianlinyi.cn/blog/2021/03/22/LeetCode 1489 找到最小生成树里的关键边和伪关键边/</a>
+    <a href="https://qianlinyi.cn/blog/2021/03/22/LeetCode%201489%20%E6%89%BE%E5%88%B0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%87%8C%E7%9A%84%E5%85%B3%E9%94%AE%E8%BE%B9%E5%92%8C%E4%BC%AA%E5%85%B3%E9%94%AE%E8%BE%B9/" title="LeetCode 1489 找到最小生成树里的关键边和伪关键边">https://qianlinyi.cn/blog/2021/03/22/LeetCode 1489 找到最小生成树里的关键边和伪关键边/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -412,8 +413,8 @@
       </div>
 
 
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcanvas.js"></script>
 <div class="widget-wrap">
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
@@ -483,10 +484,10 @@
     </footer>
   </div>
   <!--崩溃欺骗-->
-  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <script type="text/javascript" src="/blog/js/crash_cheat.js"></script>
   <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-  
+  <script type="text/javascript" src="/blog/js/clicklove.js"></script>
+
   
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>

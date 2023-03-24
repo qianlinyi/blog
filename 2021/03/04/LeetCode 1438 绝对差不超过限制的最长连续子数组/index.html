@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+  <meta name="referrer" content="no-referrer"/>
   <meta charset="UTF-8">
 <meta name="baidu-site-verification" content="code-nYZWMvncCw" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,7 +26,7 @@
   <meta name="description" content="题目链接 给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。 如果不存在满足条件的子数组，则返回 0 。 示例 1：1234567891011121314输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4输出：2 解释：所有子数组如下：[8] 最大绝对差 |8-8| &#x3D; 0 &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode 1438 绝对差不超过限制的最长连续子数组">
-<meta property="og:url" content="http://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:url" content="https://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="旺崽的博客">
 <meta property="og:description" content="题目链接 给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。 如果不存在满足条件的子数组，则返回 0 。 示例 1：1234567891011121314输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4输出：2 解释：所有子数组如下：[8] 最大绝对差 |8-8| &#x3D; 0 &amp;">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +39,7 @@
 <meta property="article:tag" content="multiset">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
+<link rel="canonical" href="https://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
 
 
 <script id="page-configurations">
@@ -195,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="https://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/blog/images/%E5%A4%B4%E5%83%8F1.jpg">
@@ -295,7 +296,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" title="LeetCode 1438 绝对差不超过限制的最长连续子数组">http://qianlinyi.cn/blog/2021/03/04/LeetCode 1438 绝对差不超过限制的最长连续子数组/</a>
+    <a href="https://qianlinyi.cn/blog/2021/03/04/LeetCode%201438%20%E7%BB%9D%E5%AF%B9%E5%B7%AE%E4%B8%8D%E8%B6%85%E8%BF%87%E9%99%90%E5%88%B6%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" title="LeetCode 1438 绝对差不超过限制的最长连续子数组">https://qianlinyi.cn/blog/2021/03/04/LeetCode 1438 绝对差不超过限制的最长连续子数组/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -414,8 +415,8 @@
       </div>
 
 
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcloud.js"></script>
-<script type="text/javascript" charset="utf-8" src="https://qianlinyi.cn/js/tagcanvas.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/blog/js/tagcanvas.js"></script>
 <div class="widget-wrap">
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
@@ -485,10 +486,10 @@
     </footer>
   </div>
   <!--崩溃欺骗-->
-  <script type="text/javascript" src="/js/crash_cheat.js"></script>
+  <script type="text/javascript" src="/blog/js/crash_cheat.js"></script>
   <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
-  
+  <script type="text/javascript" src="/blog/js/clicklove.js"></script>
+
   
   
   <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
